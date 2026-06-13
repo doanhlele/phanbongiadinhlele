@@ -6,7 +6,7 @@
 <title>Phân Bón Xanh – Cửa Hàng Nông Nghiệp</title>
 <style>
 /* ============================================================
-   RESET & DESIGN TOKENS (giữ nguyên 100% code cũ)
+   RESET & DESIGN TOKENS (giữ nguyên 100% code gốc)
    ============================================================ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--g900:#0d3d1f;--g800:#135e2d;--g700:#1a7a3c;--g600:#2ea455;--g500:#3dbf6a;--g400:#5ed68a;--g100:#e8f8ee;--g50:#f0faf3;--n900:#111827;--n700:#374151;--n500:#6b7280;--n300:#d1d5db;--n200:#e5e7eb;--n100:#f3f4f6;--n0:#ffffff;--orange:#f97316;--red:#ef4444;--redbg:#fef2f2;--amber:#f59e0b;--amberbg:#fffbeb;--bg:#f0f4f1;--card:#ffffff;--border:#d4e8da;--border2:#a8cfb4;--r4:4px;--r8:8px;--r12:12px;--r16:16px;--r24:24px;--r999:999px;--s1:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);--s2:0 4px 12px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.06);--s3:0 10px 32px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.08);--s-green:0 4px 18px rgba(26,122,60,.28);--font:'Segoe UI',system-ui,-apple-system,sans-serif}
@@ -259,7 +259,7 @@ td{padding:9px 13px;vertical-align:middle}
 }
 .empty{text-align:center;padding:56px 20px;color:var(--n500)}
 .empty .ei{font-size:50px;margin-bottom:12px}
-/* Responsive gốc */
+/* Responsive cũ */
 @media(max-width:1000px){.admin-layout{grid-template-columns:1fr}.product-grid.cols-4{grid-template-columns:repeat(2,1fr)}.product-grid.cols-3{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.product-grid.cols-2,.product-grid.cols-3,.product-grid.cols-4{grid-template-columns:repeat(2,1fr)}.header-inner{gap:6px;height:56px}.logo-tagline{display:none}.nav-btn{padding:6px 8px;font-size:12px}.main{padding:14px 10px}.hero{padding:20px 18px}.hero-icon{display:none}.modal{max-width:100%;border-radius:var(--r12) var(--r12) 0 0;align-self:flex-end;margin-top:auto}.modal-overlay{align-items:flex-end;padding:0}.pay-success-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:400px){.product-grid.cols-2,.product-grid.cols-3,.product-grid.cols-4{grid-template-columns:1fr}}
@@ -267,7 +267,7 @@ td{padding:9px 13px;vertical-align:middle}
 </head>
 <body>
 
-<!-- HEADER (giữ nguyên) -->
+<!-- HEADER -->
 <header class="header">
   <div class="header-inner">
     <a class="logo" href="#" onclick="switchTab('shop');return false"><div class="logo-icon">🌱</div><div class="logo-text"><span class="logo-name">Phân Bón Xanh</span><span class="logo-tagline">Nông nghiệp xanh – Vụ mùa bội thu</span></div></a>
@@ -441,7 +441,7 @@ function normProduct(p, idx) {
 }
 
 // ============================================================
-// SHOP RENDER (giữ nguyên logic gốc)
+// SHOP RENDER
 // ============================================================
 function renderShop() {
   const grid  = document.getElementById('shopGrid');
@@ -486,7 +486,7 @@ function setCol(n) { colCount = n; localStorage.setItem('pb_cols', n); document.
 function applyColCount() { document.getElementById('shopGrid').className = 'product-grid cols-' + colCount; document.querySelectorAll('.col-pick-btn').forEach((b,i)=>b.classList.toggle('active',[2,3,4][i]===colCount)); }
 
 // ============================================================
-// CART (giữ nguyên)
+// CART
 // ============================================================
 function addToCart(id) {
   const p = products.find(x => x.id === id);
@@ -514,7 +514,7 @@ function removeFromCart(id) { cart = cart.filter(x=>x.id!==id); saveCart(); }
 function clearCart() { cart = []; saveCart(); }
 
 // ============================================================
-// CHECKOUT (giữ nguyên)
+// CHECKOUT
 // ============================================================
 function openCheckout() { if(!cart.length) { toast('Giỏ hàng trống!','orange'); return; } payInput='0'; document.getElementById('coNote').value=''; renderCheckoutItems(); renderCheckoutTotals(); renderPayDisplay(); openModal('checkoutModal'); }
 function renderCheckoutItems() { document.getElementById('coItemsList').innerHTML = cart.map((item,i)=>`<div class="co-item"><span class="co-num">${i+1}</span><span class="co-name" title="${esc(item.name)}">${esc(item.name)}</span><div class="co-qctrl"><button class="coq-btn" onclick="coQty('${item.id}',-1)">−</button><span class="coq-val">${item.quantity}</span><button class="coq-btn" onclick="coQty('${item.id}',1)">+</button></div><span class="co-sub">${fmtPrice(item.price*item.quantity)}</span><button class="co-del" onclick="coDel('${item.id}')">🗑️</button></div>`).join(''); }
@@ -555,13 +555,13 @@ function showSuccessModal(txn) {
 function printInvoice(txn) {
   const STORE = { name:'PHÂN BÓN XANH', addr:'286/4 ấp Tân Yên, xã Gia Tân 3, TP Đồng Nai', phone:'Hotline: 0938.969.987 / 0909.537.967' };
   const rows = txn.items.map((item,i)=>`<tr><td class="tc">${i+1}</td><td class="tl">${esc(item.name)}</td><td class="tc">Bao/Chai</td><td class="tc">${item.quantity}</td><td class="tr">${fmtPrice(item.price)}</td><td class="tr">${fmtPrice(item.price*item.quantity)}</td></tr>`).join('');
-  document.getElementById('printArea').innerHTML = `<div><div class="inv-header"><div><div style="font-weight:800;font-size:13pt">🌱 ${esc(STORE.name)}</div><div>${esc(STORE.addr)}</div><div>${esc(STORE.phone)}</div></div><div style="text-align:right"><div><strong>Mã phiếu:</strong> ${txn.id}</div><div><strong>Trạng thái:</strong> ${txn.status==='paid'?'ĐÃ THANH TOÁN':'GHI NỢ'}</div></div></div><div class="inv-title">HÓA ĐƠN BÁN LẺ<br><span style="font-size:11pt;font-weight:400;font-style:italic">${txn.time}</span></div><div class="inv-info"><div class="inv-info-row"><span class="inv-info-key">Khách hàng:</span><span class="inv-info-val"></span></div><div class="inv-info-row"><span class="inv-info-key">Địa chỉ:</span><span class="inv-info-val"></span></div><div class="inv-info-row"><span class="inv-info-key">Ghi chú:</span><span class="inv-info-val">${esc(txn.note||'')}</span></div></div><table class="inv-table"><thead><tr><th>STT</th><th>Tên hàng hóa</th><th>ĐVT</th><th>SL</th><th>Đơn giá</th><th>Thành tiền</th></tr></thead><tbody>${rows}<tr><td colspan="5" class="tr"><strong>TỔNG CỘNG:</strong></td><td class="tr"><strong>${fmtPrice(txn.total)}</strong></td></tr>${txn.paid>0?`<tr><td colspan="5" class="tr">Tiền khách đưa:</td><td class="tr">${fmtPrice(txn.paid)}</td></tr><tr><td colspan="5" class="tr">Tiền thừa:</td><td class="tr">${fmtPrice(txn.change)}</td></tr>`:''}${txn.status!=='paid'?`<tr style="color:red"><td colspan="5" class="tr"><strong>CÒN NỢ:</strong></td><td class="tr"><strong>${fmtPrice(txn.total)}</strong></td></tr>`:''}</tbody></table><div class="inv-sign"><div class="inv-sign-box"><div>NGƯỜI MUA HÀNG</div><div style="font-style:italic;font-size:10pt">(Ký, họ tên)</div><div class="inv-sign-space"></div></div><div class="inv-sign-box"><div>Ngày &nbsp;&nbsp; tháng &nbsp;&nbsp; năm 20___</div><div>NGƯỜI LẬP PHIẾU</div><div style="font-style:italic;font-size:10pt">(Ký, họ tên)</div><div class="inv-sign-space"></div></div></div></div>`;
+  document.getElementById('printArea').innerHTML = `<div><div class="inv-header"><div><div style="font-weight:800;font-size:13pt">🌱 ${esc(STORE.name)}</div><div>${esc(STORE.addr)}</div><div>${esc(STORE.phone)}</div></div><div style="text-align:right"><div><strong>Mã phiếu:</strong> ${txn.id}</div><div><strong>Trạng thái:</strong> ${txn.status==='paid'?'ĐÃ THANH TOÁN':'GHI NỢ'}</div></div></div><div class="inv-title">HÓA ĐƠN BÁN LẺ<br><span style="font-size:11pt;font-weight:400;font-style:italic">${txn.time}</span></div><div class="inv-info"><div class="inv-info-row"><span class="inv-info-key">Khách hàng:</span><span class="inv-info-val"></span></div><div class="inv-info-row"><span class="inv-info-key">Địa chỉ:</span><span class="inv-info-val"></span></div><div class="inv-info-row"><span class="inv-info-key">Ghi chú:</span><span class="inv-info-val">${esc(txn.note||'')}</span></div></div><table class="inv-table"><thead><tr><th>STT</th><th>Tên hàng hóa</th><th>ĐVT</th><th>SL</th><th>Đơn giá</th><th>Thành tiền</th></tr></thead><tbody>${rows}<tr><td colspan="5" class="tr"><strong>TỔNG CỘNG:</strong></td><td class="tr"><strong>${fmtPrice(txn.total)}</strong></td></tr>${txn.paid>0?`<tr><td colspan="5" class="tr">Tiền khách đưa:</td><td class="tr">${fmtPrice(txn.paid)}</div></div></td><tr><td colspan="5" class="tr">Tiền thừa:</td><td class="tr">${fmtPrice(txn.change)}</div></div></td></tr>`:''}${txn.status!=='paid'?`<tr style="color:red"><td colspan="5" class="tr"><strong>CÒN NỢ:</strong></td><td class="tr"><strong>${fmtPrice(txn.total)}</strong></td></tr>`:''}</tbody></table><div class="inv-sign"><div class="inv-sign-box"><div>NGƯỜI MUA HÀNG</div><div style="font-style:italic;font-size:10pt">(Ký, họ tên)</div><div class="inv-sign-space"></div></div><div class="inv-sign-box"><div>Ngày &nbsp;&nbsp; tháng &nbsp;&nbsp; năm 20___</div><div>NGƯỜI LẬP PHIẾU</div><div style="font-style:italic;font-size:10pt">(Ký, họ tên)</div><div class="inv-sign-space"></div></div></div></div>`;
   window.onafterprint = () => { document.getElementById('printArea').innerHTML = ''; window.onafterprint = null; };
   window.print();
 }
 // ADMIN
 function filterAdminTable() { adminFilter = document.getElementById('adminSearch').value.toLowerCase().trim(); renderAdminTable(); }
-function renderAdminTable() { let list = adminFilter ? products.filter(p=>[p.name,p.category,p.brand].some(s=>s.toLowerCase().includes(adminFilter))) : products; let tbody = document.getElementById('adminTable'); if(!list.length) { tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--n500)">Không có sản phẩm nào</td></tr>'; return; } tbody.innerHTML = list.map(p=>`<tr><td>${p.img?`<img class="t-img" src="${esc(p.img)}" alt="" onerror="this.outerHTML='<div class=t-img style=display:flex;align-items:center;justify-content:center>🌿</div>'">`:'<div class="t-img" style="display:flex;align-items:center;justify-content:center;font-size:20px">🌿</div>'}</td><td><div class="t-name">${esc(p.name)}</div></td><td style="font-weight:700;color:var(--g700);white-space:nowrap">${fmtPrice(p.price)}</td><td>${p.category?`<span class="pc-tag pc-tag-cat">${esc(p.category)}</span>`:'–'}</td><td>${p.brand?`<span class="pc-tag pc-tag-brand">${esc(p.brand)}</span>`:'–'}</td><td style="font-weight:700;color:${p.qty<=0?'var(--red)':p.qty<=5?'var(--amber)':'var(--n900)'}">${p.qty}</td><td><div class="t-acts"><button class="btn btn-ghost btn-sm" onclick="editProduct('${esc(p.id)}')">✏️</button><button class="btn btn-red btn-sm" onclick="deleteProduct('${esc(p.id)}')">🗑️</button></div></td></tr>`).join(''); }
+function renderAdminTable() { let list = adminFilter ? products.filter(p=>[p.name,p.category,p.brand].some(s=>s.toLowerCase().includes(adminFilter))) : products; let tbody = document.getElementById('adminTable'); if(!list.length) { tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--n500)">Không có sản phẩm nào</div></div><tr>'; return; } tbody.innerHTML = list.map(p=>`<tr><td>${p.img?`<img class="t-img" src="${esc(p.img)}" alt="" onerror="this.outerHTML='<div class=t-img style=display:flex;align-items:center;justify-content:center>🌿</div>'">`:'<div class="t-img" style="display:flex;align-items:center;justify-content:center;font-size:20px">🌿</div>'}</div></div></td><td><div class="t-name">${esc(p.name)}</div></div></div></td><td style="font-weight:700;color:var(--g700);white-space:nowrap">${fmtPrice(p.price)}</div></div></td><td>${p.category?`<span class="pc-tag pc-tag-cat">${esc(p.category)}</span>`:'–'}</div></div></td><td>${p.brand?`<span class="pc-tag pc-tag-brand">${esc(p.brand)}</span>`:'–'}</div></div></td><td style="font-weight:700;color:${p.qty<=0?'var(--red)':p.qty<=5?'var(--amber)':'var(--n900)'}">${p.qty}</div></div></td><td><div class="t-acts"><button class="btn btn-ghost btn-sm" onclick="editProduct('${esc(p.id)}')">✏️</button><button class="btn btn-red btn-sm" onclick="deleteProduct('${esc(p.id)}')">🗑️</button></div></div></div></td></tr>`).join(''); }
 function updateAdminCount() { document.getElementById('adminCount').textContent = '('+products.length+' sp)'; }
 function editProduct(id) { let p=products.find(x=>x.id===id); if(!p) return; document.getElementById('editId').value=id; document.getElementById('f_name').value=p.name; document.getElementById('f_price').value=p.price; document.getElementById('f_qty').value=p.qty; document.getElementById('f_category').value=p.category; document.getElementById('f_brand').value=p.brand; document.getElementById('f_img').value=p.img; document.getElementById('f_desc').value=p.desc; document.getElementById('adminFormTitle').textContent='✏️ Chỉnh sửa sản phẩm'; document.getElementById('submitBtn').innerHTML='💾 Lưu thay đổi'; document.getElementById('cancelBtn').style.display=''; document.getElementById('f_name').focus(); window.scrollTo({top:0,behavior:'smooth'}); }
 function cancelEdit() { document.getElementById('editId').value=''; ['f_name','f_price','f_img','f_desc','f_category','f_brand'].forEach(id=>document.getElementById(id).value=''); document.getElementById('f_qty').value=0; document.getElementById('adminFormTitle').textContent='➕ Thêm sản phẩm'; document.getElementById('submitBtn').innerHTML='➕ Thêm sản phẩm'; document.getElementById('cancelBtn').style.display='none'; }
@@ -582,157 +582,115 @@ function fmtPrice(v) { return (parseFloat(v)||0).toLocaleString('vi-VN')+'₫'; 
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 </script>
 
-<!-- ===== CODE BỔ SUNG (tối ưu hiệu năng + fix lỗi bố cục iPhone) ===== -->
+<!-- ===== SỬA LỖI IN VÀ RESPONSIVE IPHONE ===== -->
 <style>
-  /* In khổ A5 */
-  @media print { @page { size: A5; margin: 10mm; } }
-  /* Nút xóa tìm kiếm */
-  .search-wrap { position: relative; }
-  .search-clear { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 16px; color: var(--n500); cursor: pointer; padding: 0 4px; display: none; }
-  .search-clear:hover { color: var(--red); }
-  .admin-search-wrap { position: relative; }
-  .admin-search-clear { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 16px; color: var(--n500); cursor: pointer; padding: 0 4px; display: none; }
-  .admin-search-clear:hover { color: var(--red); }
-  /* Fix bố cục trên iPhone: tránh tràn, đảm bảo grid không bị vỡ */
+  /* In khổ A5 & đảm bảo in được */
+  @media print {
+    @page { size: A5; margin: 10mm; }
+    #printArea { display: block !important; }
+  }
+  /* Responsive cho iPhone - fix bố cục thanh nav và toàn bộ giao diện */
   @media (max-width: 768px) {
-    .header-inner { gap: 6px; height: 56px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .nav { gap: 4px; flex: none; }
-    .nav-btn { padding: 5px 8px; font-size: 11px; white-space: nowrap; }
-    .logo-text .logo-tagline { display: none; }
-    .hero { flex-direction: column; text-align: center; padding: 20px 16px; }
-    .hero-icon { display: none; }
-    .shop-toolbar { flex-direction: column; align-items: stretch; }
-    .search-wrap { width: 100%; }
-    .filter-select { width: 100%; }
-    .col-picker { justify-content: center; }
-    .product-grid { gap: 10px; }
-    .product-grid.cols-2, .product-grid.cols-3, .product-grid.cols-4 { grid-template-columns: repeat(2, 1fr); }
-    .admin-layout { grid-template-columns: 1fr; }
-    .modal .modal-lg, .modal .modal-sm { max-width: calc(100% - 20px); margin: 0 auto; }
-    .numpad { gap: 5px; }
-    .npbtn { padding: 10px 4px; font-size: 15px; }
-    .pay-display { font-size: 24px; }
-    .cart-item { flex-wrap: wrap; gap: 8px; }
-    .ci-info { min-width: 120px; }
-    .ci-controls { order: 3; }
-    .ci-sub { order: 4; }
-    .ci-del { order: 5; }
-    .hitem-head { flex-wrap: wrap; gap: 6px; }
+    .header-inner {
+      flex-wrap: wrap;
+      height: auto;
+      padding: 8px 0;
+    }
+    .nav {
+      order: 3;
+      width: 100%;
+      overflow-x: auto;
+      justify-content: flex-start;
+      gap: 4px;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+    }
+    .nav-btn {
+      padding: 6px 10px;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+    .logo {
+      flex-shrink: 0;
+    }
+    .logo-tagline {
+      display: none;
+    }
+    .header-right {
+      margin-left: auto;
+    }
+    .hero {
+      flex-direction: column;
+      text-align: center;
+      padding: 16px;
+    }
+    .hero-icon {
+      display: none;
+    }
+    .shop-toolbar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .search-wrap {
+      width: 100%;
+    }
+    .filter-select {
+      width: 100%;
+    }
+    .col-picker {
+      justify-content: center;
+    }
+    .product-grid {
+      gap: 10px;
+    }
+    .product-grid.cols-2, .product-grid.cols-3, .product-grid.cols-4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .admin-layout {
+      grid-template-columns: 1fr;
+    }
+    .cart-item {
+      flex-wrap: wrap;
+    }
+    .ci-info {
+      min-width: 120px;
+    }
+    .modal .modal-lg, .modal .modal-sm {
+      max-width: calc(100% - 20px);
+      margin: 0 auto;
+    }
+    .numpad {
+      gap: 5px;
+    }
+    .npbtn {
+      padding: 10px 4px;
+      font-size: 15px;
+    }
+    .pay-display {
+      font-size: 24px;
+    }
+    .hitem-head {
+      flex-wrap: wrap;
+    }
   }
   @media (max-width: 480px) {
-    .product-grid.cols-2, .product-grid.cols-3, .product-grid.cols-4 { grid-template-columns: 1fr; }
-    .header-inner { height: auto; min-height: 56px; flex-wrap: wrap; justify-content: space-between; }
-    .nav { order: 3; width: 100%; overflow-x: auto; justify-content: flex-start; padding-bottom: 6px; }
-    .logo { flex-shrink: 0; }
-    .header-right { flex-shrink: 0; }
-    .hero-text h2 { font-size: 18px; }
-    .hero-text p { font-size: 12px; }
-    .pc-name { font-size: 13px; min-height: auto; }
-    .pc-price { font-size: 16px; }
-    .pc-btn { padding: 8px; font-size: 12px; }
+    .product-grid.cols-2, .product-grid.cols-3, .product-grid.cols-4 {
+      grid-template-columns: 1fr;
+    }
+    .hero-text h2 {
+      font-size: 18px;
+    }
+    .hero-text p {
+      font-size: 12px;
+    }
+    .pc-name {
+      font-size: 13px;
+    }
+    .pc-price {
+      font-size: 16px;
+    }
   }
 </style>
-<div class="modal-overlay" id="quickPriceModal"><div class="modal modal-sm"><div class="mh"><div class="mh-title">💰 Chỉnh sửa giá sản phẩm</div><button class="mh-close" onclick="closeModal('quickPriceModal')">✕</button></div><div class="mb"><div class="form-group"><label>Sản phẩm</label><input type="text" id="qpName" readonly style="background:var(--n100);"></div><div class="form-group"><label>Giá mới (₫)</label><input type="number" id="qpPrice" min="0" step="1000" style="font-size:16px;"></div></div><div class="mf"><button class="btn btn-ghost" onclick="closeModal('quickPriceModal')">Hủy</button><button class="btn btn-green" id="qpSaveBtn">Lưu giá</button></div></div></div>
-<script>
-(function() {
-  // Nút xóa tìm kiếm
-  const addClearButton = (inputId, clearBtnClass, parentSelector) => {
-    const input = document.getElementById(inputId);
-    if (!input) return;
-    const parent = input.closest(parentSelector);
-    if (!parent) return;
-    let clearBtn = parent.querySelector('.' + clearBtnClass);
-    if (!clearBtn) {
-      clearBtn = document.createElement('button');
-      clearBtn.className = clearBtnClass;
-      clearBtn.innerHTML = '✕';
-      clearBtn.style.cssText = 'position:absolute; right:8px; top:50%; transform:translateY(-50%); background:none; border:none; font-size:16px; cursor:pointer; color:var(--n500); display:none;';
-      clearBtn.onclick = () => { input.value = ''; input.dispatchEvent(new Event('input')); clearBtn.style.display = 'none'; };
-      parent.style.position = 'relative';
-      parent.appendChild(clearBtn);
-    }
-    input.addEventListener('input', () => { clearBtn.style.display = input.value.trim() !== '' ? 'block' : 'none'; });
-    if (input.value.trim() !== '') clearBtn.style.display = 'block';
-  };
-  addClearButton('shopSearch', 'search-clear', '.search-wrap');
-  addClearButton('adminSearch', 'admin-search-clear', '.admin-search-wrap');
-
-  // Modal sửa giá nhanh
-  let currentProductForPrice = null;
-  const addPriceEditButtons = () => {
-    const adminTable = document.getElementById('adminTable');
-    if (!adminTable) return;
-    const observer = new MutationObserver(() => {
-      const rows = adminTable.querySelectorAll('tr');
-      rows.forEach(row => {
-        const priceCell = row.cells[2];
-        if (priceCell && !priceCell.querySelector('.price-edit-btn')) {
-          const priceText = priceCell.innerText;
-          const btn = document.createElement('button');
-          btn.innerHTML = '💰';
-          btn.className = 'price-edit-btn';
-          btn.style.cssText = 'margin-left:8px; background:none; border:none; font-size:14px; cursor:pointer; color:var(--g700);';
-          btn.title = 'Chỉnh sửa giá nhanh';
-          btn.onclick = (e) => {
-            e.stopPropagation();
-            const productId = row.querySelector('.t-acts button:first-child')?.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
-            if (productId) {
-              const product = products.find(p => p.id === productId);
-              if (product) {
-                currentProductForPrice = product;
-                document.getElementById('qpName').value = product.name;
-                document.getElementById('qpPrice').value = product.price;
-                openModal('quickPriceModal');
-              }
-            }
-          };
-          priceCell.style.display = 'flex';
-          priceCell.style.alignItems = 'center';
-          priceCell.style.justifyContent = 'space-between';
-          priceCell.style.gap = '6px';
-          const span = document.createElement('span');
-          span.innerText = priceText;
-          priceCell.innerHTML = '';
-          priceCell.appendChild(span);
-          priceCell.appendChild(btn);
-        }
-      });
-    });
-    observer.observe(adminTable, { childList: true, subtree: true });
-  };
-  document.getElementById('qpSaveBtn')?.addEventListener('click', async () => {
-    if (!currentProductForPrice) return;
-    const newPrice = parseFloat(document.getElementById('qpPrice').value);
-    if (isNaN(newPrice) || newPrice < 0) { toast('Giá không hợp lệ', 'orange'); return; }
-    closeModal('quickPriceModal');
-    const payload = { action:'update', id:currentProductForPrice.id, name:currentProductForPrice.name, price:newPrice, qty:currentProductForPrice.qty, category:currentProductForPrice.category, brand:currentProductForPrice.brand, img:currentProductForPrice.img, desc:currentProductForPrice.desc };
-    const btn = document.getElementById('qpSaveBtn');
-    const originalText = btn.innerHTML;
-    btn.disabled = true; btn.innerHTML = '<span class="spin"></span>';
-    await formPost(payload);
-    toast('Đang cập nhật giá...', 'green');
-    setTimeout(async () => {
-      await syncFromSheets(true);
-      toast('✅ Đã cập nhật giá', 'green');
-      if (currentTab === 'admin') renderAdminTable();
-      btn.disabled = false; btn.innerHTML = originalText;
-    }, 1500);
-  });
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addPriceEditButtons);
-  else addPriceEditButtons();
-
-  // Debounce tìm kiếm để chống lag
-  function debounce(fn, delay) {
-    let timer;
-    return function(...args) {
-      clearTimeout(timer);
-      timer = setTimeout(() => fn.apply(this, args), delay);
-    };
-  }
-  if (window.filterShop) window.filterShop = debounce(window.filterShop, 250);
-  if (window.filterAdminTable) window.filterAdminTable = debounce(window.filterAdminTable, 250);
-})();
-</script>
-<!-- ===== KẾT THÚC CODE BỔ SUNG ===== -->
+<!-- ===== KẾT THÚC SỬA ===== -->
 </body>
 </html>
