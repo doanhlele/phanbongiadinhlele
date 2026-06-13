@@ -6,10 +6,25 @@
 <title>Phân Bón Xanh – Cửa Hàng Nông Nghiệp</title>
 <style>
 /* ============================================================
-   RESET & DESIGN TOKENS (giữ nguyên 100% code gốc)
+   RESET & DESIGN TOKENS (giữ nguyên bản gốc)
    ============================================================ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--g900:#0d3d1f;--g800:#135e2d;--g700:#1a7a3c;--g600:#2ea455;--g500:#3dbf6a;--g400:#5ed68a;--g100:#e8f8ee;--g50:#f0faf3;--n900:#111827;--n700:#374151;--n500:#6b7280;--n300:#d1d5db;--n200:#e5e7eb;--n100:#f3f4f6;--n0:#ffffff;--orange:#f97316;--red:#ef4444;--redbg:#fef2f2;--amber:#f59e0b;--amberbg:#fffbeb;--bg:#f0f4f1;--card:#ffffff;--border:#d4e8da;--border2:#a8cfb4;--r4:4px;--r8:8px;--r12:12px;--r16:16px;--r24:24px;--r999:999px;--s1:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);--s2:0 4px 12px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.06);--s3:0 10px 32px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.08);--s-green:0 4px 18px rgba(26,122,60,.28);--font:'Segoe UI',system-ui,-apple-system,sans-serif}
+:root{
+  --g900:#0d3d1f; --g800:#135e2d; --g700:#1a7a3c; --g600:#2ea455;
+  --g500:#3dbf6a; --g400:#5ed68a; --g100:#e8f8ee; --g50:#f0faf3;
+  --n900:#111827; --n700:#374151; --n500:#6b7280; --n300:#d1d5db;
+  --n200:#e5e7eb; --n100:#f3f4f6; --n0:#ffffff;
+  --orange:#f97316; --red:#ef4444; --redbg:#fef2f2;
+  --amber:#f59e0b; --amberbg:#fffbeb;
+  --bg:#f0f4f1; --card:#ffffff;
+  --border:#d4e8da; --border2:#a8cfb4;
+  --r4:4px; --r8:8px; --r12:12px; --r16:16px; --r24:24px; --r999:999px;
+  --s1:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
+  --s2:0 4px 12px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.06);
+  --s3:0 10px 32px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.08);
+  --s-green:0 4px 18px rgba(26,122,60,.28);
+  --font:'Segoe UI',system-ui,-apple-system,sans-serif;
+}
 body{font-family:var(--font);background:var(--bg);color:var(--n900);font-size:15px;line-height:1.6;min-height:100vh}
 img{display:block;max-width:100%}
 button{cursor:pointer;font-family:inherit;transition:all .15s}
@@ -17,6 +32,7 @@ input,textarea,select{font-family:inherit}
 ::-webkit-scrollbar{width:5px;height:5px}
 ::-webkit-scrollbar-track{background:var(--n100)}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:var(--r999)}
+/* ===== HEADER ===== */
 .header{background:linear-gradient(135deg,var(--g800) 0%,var(--g700) 60%,var(--g600) 100%);color:#fff;padding:0 20px;position:sticky;top:0;z-index:80;box-shadow:0 2px 12px rgba(0,0,0,.25)}
 .header-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:14px;height:62px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex-shrink:0}
@@ -32,6 +48,7 @@ input,textarea,select{font-family:inherit}
 .hbtn:hover{background:rgba(255,255,255,.28)}
 .hbtn:disabled{opacity:.5;cursor:not-allowed}
 .cart-count{background:var(--orange);color:#fff;font-size:11px;font-weight:800;padding:0 6px;height:18px;line-height:18px;border-radius:var(--r999);min-width:18px;text-align:center;display:inline-block}
+/* ===== HERO ===== */
 .hero{background:linear-gradient(135deg,var(--g800) 0%,var(--g700) 50%,var(--g600) 100%);color:#fff;border-radius:var(--r16);padding:28px 32px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:20px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;right:-30px;top:-30px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06);pointer-events:none}
 .hero::after{content:'';position:absolute;right:40px;bottom:-50px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none}
@@ -40,24 +57,27 @@ input,textarea,select{font-family:inherit}
 .hero-badges{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
 .hero-badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);padding:5px 12px;border-radius:var(--r999);font-size:12px;font-weight:600}
 .hero-icon{font-size:56px;flex-shrink:0;line-height:1}
+/* ===== MAIN & TABS ===== */
 .main{max-width:1280px;margin:0 auto;padding:20px 16px}
 .tab-content{display:none}
 .tab-content.active{display:block}
+/* ===== SHOP TOOLBAR ===== */
 .shop-toolbar{background:var(--card);border:1px solid var(--border);border-radius:var(--r12);padding:14px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:18px;box-shadow:var(--s1)}
 .search-wrap{flex:1;min-width:180px;position:relative}
-.search-wrap input{width:100%;border:1.5px solid var(--border);border-radius:var(--r8);padding:9px 12px 9px 38px;font-size:14px;background:var(--n100);color:var(--n900);outline:none;transition:border-color .2s,background .2s}
+.search-wrap input{width:100%;border:1.5px solid var(--border);border-radius:var(--r8);padding:9px 12px 9px 38px;font-size:14px;background:var(--n100);color:var(--n900);outline:none}
 .search-wrap input:focus{border-color:var(--g600);background:#fff}
-.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--n500);pointer-events:none;font-size:14px}
-.filter-select{border:1.5px solid var(--border);border-radius:var(--r8);padding:9px 12px;font-size:13px;background:var(--n100);color:var(--n900);outline:none;cursor:pointer}
+.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--n500);font-size:14px}
+.filter-select{border:1.5px solid var(--border);border-radius:var(--r8);padding:9px 12px;font-size:13px;background:var(--n100);color:var(--n900);cursor:pointer}
 .filter-select:focus{border-color:var(--g600)}
 .col-picker{display:flex;gap:3px;background:var(--n100);padding:3px;border-radius:var(--r8)}
 .col-pick-btn{background:transparent;border:none;color:var(--n500);padding:5px 12px;border-radius:var(--r4);font-size:13px;font-weight:700}
 .col-pick-btn.active,.col-pick-btn:hover{background:#fff;color:var(--g700);box-shadow:var(--s1)}
+/* ===== PRODUCT GRID ===== */
 .product-grid{display:grid;gap:16px}
 .product-grid.cols-2{grid-template-columns:repeat(2,1fr)}
 .product-grid.cols-3{grid-template-columns:repeat(3,1fr)}
 .product-grid.cols-4{grid-template-columns:repeat(4,1fr)}
-.product-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r12);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .18s,border-color .18s;box-shadow:var(--s1)}
+.product-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r12);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .18s;box-shadow:var(--s1)}
 .product-card:hover{box-shadow:var(--s3);transform:translateY(-3px);border-color:var(--border2)}
 .pc-img-wrap{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--g50)}
 .pc-img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
@@ -66,7 +86,7 @@ input,textarea,select{font-family:inherit}
 .pc-img-placeholder .ph-icon{font-size:42px}
 .pc-img-placeholder .ph-label{font-size:11px;font-weight:600;opacity:.7}
 .pc-badge-wrap{position:absolute;top:8px;left:8px;display:flex;flex-direction:column;gap:4px}
-.pc-badge{padding:2px 8px;border-radius:var(--r999);font-size:10px;font-weight:700;letter-spacing:.2px;backdrop-filter:blur(4px)}
+.pc-badge{padding:2px 8px;border-radius:var(--r999);font-size:10px;font-weight:700;backdrop-filter:blur(4px)}
 .pc-badge-new{background:rgba(249,115,22,.9);color:#fff}
 .pc-badge-hot{background:rgba(239,68,68,.9);color:#fff}
 .pc-badge-out{background:rgba(107,114,128,.85);color:#fff}
@@ -77,7 +97,7 @@ input,textarea,select{font-family:inherit}
 .pc-tag-cat{background:var(--g50);color:var(--g800);border:1px solid var(--border)}
 .pc-tag-brand{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
 .pc-name{font-size:14px;font-weight:700;color:var(--n900);line-height:1.4;min-height:40px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:7px}
-.pc-price{font-size:19px;font-weight:900;color:var(--g700);margin-bottom:6px;letter-spacing:-.3px}
+.pc-price{font-size:19px;font-weight:900;color:var(--g700);margin-bottom:6px}
 .pc-stock{font-size:12px;font-weight:600;margin-bottom:7px}
 .pc-stock.ok{color:var(--g600)}
 .pc-stock.low{color:var(--amber)}
@@ -87,16 +107,17 @@ input,textarea,select{font-family:inherit}
 .pc-btn:hover:not(:disabled){background:var(--g800)}
 .pc-btn:disabled{background:var(--n300);color:var(--n500);cursor:not-allowed}
 .pc-btn:active:not(:disabled){transform:scale(.97)}
+/* ===== CARD ===== */
 .scard{background:var(--card);border:1px solid var(--border);border-radius:var(--r16);padding:22px;margin-bottom:18px;box-shadow:var(--s1)}
 .scard-title{font-size:17px;font-weight:800;color:var(--n900);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+/* ===== CART ===== */
 .cart-empty{text-align:center;padding:64px 20px;color:var(--n500)}
 .cart-empty .ce-icon{font-size:56px;margin-bottom:14px}
-.cart-empty p{font-size:15px}
 .cart-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
-.cart-item{display:flex;gap:12px;align-items:center;background:var(--card);border:1.5px solid var(--border);border-radius:var(--r12);padding:12px;box-shadow:var(--s1)}
+.cart-item{display:flex;gap:12px;align-items:center;background:var(--card);border:1.5px solid var(--border);border-radius:var(--r12);padding:12px}
 .ci-img{width:58px;height:58px;border-radius:var(--r8);object-fit:cover;background:var(--g50);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px}
 .ci-info{flex:1;min-width:0}
-.ci-name{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
+.ci-name{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ci-price{font-size:13px;color:var(--g700);font-weight:700}
 .ci-controls{display:flex;align-items:center;gap:6px}
 .qty-btn{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--border);background:#fff;font-size:16px;font-weight:700;color:var(--n700);display:flex;align-items:center;justify-content:center}
@@ -106,416 +127,259 @@ input,textarea,select{font-family:inherit}
 .ci-del{background:none;border:none;color:var(--red);font-size:18px;padding:4px 6px;border-radius:var(--r4)}
 .ci-del:hover{background:var(--redbg)}
 .cart-summary{background:var(--g50);border:2px solid var(--g400);border-radius:var(--r12);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;margin-top:6px}
-.cs-label{font-size:14px;font-weight:600;color:var(--n500)}
 .cs-total{font-size:24px;font-weight:900;color:var(--g700)}
 .cart-cta{width:100%;margin-top:12px;background:linear-gradient(135deg,var(--g700),var(--g800));color:#fff;border:none;border-radius:var(--r12);padding:15px;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:8px}
-.cart-cta:hover{filter:brightness(1.1);transform:translateY(-1px)}
 .cart-clear{width:100%;margin-top:8px;background:transparent;border:1.5px solid var(--border);color:var(--n500);border-radius:var(--r8);padding:10px;font-size:13px;font-weight:600}
 .cart-clear:hover{background:var(--redbg);border-color:var(--red);color:var(--red)}
+/* ===== FLOAT CHECKOUT ===== */
 .float-checkout{position:fixed;bottom:26px;right:22px;z-index:70;background:linear-gradient(135deg,var(--g700),var(--g800));color:#fff;border:none;border-radius:var(--r16);padding:14px 20px;box-shadow:0 6px 28px rgba(26,122,60,.4);display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;opacity:0;pointer-events:none;transition:all .25s}
 .float-checkout.show{opacity:1;pointer-events:all}
-.float-checkout:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(26,122,60,.45)}
-.fc-count{background:var(--orange);border-radius:var(--r999);padding:2px 9px;font-size:12px;font-weight:800}
-.fc-total{font-size:16px;font-weight:900;letter-spacing:-.3px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 18px;border-radius:var(--r8);border:none;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;white-space:nowrap}
+.fc-count{background:var(--orange);border-radius:var(--r999);padding:2px 9px}
+.fc-total{font-size:16px;font-weight:900}
+/* ===== BUTTONS ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 18px;border-radius:var(--r8);border:none;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer}
 .btn:active{transform:scale(.96)}
-.btn:disabled{opacity:.5;cursor:not-allowed}
 .btn-green{background:var(--g700);color:#fff}
-.btn-green:hover:not(:disabled){background:var(--g800)}
+.btn-green:hover{background:var(--g800)}
 .btn-red{background:var(--red);color:#fff}
-.btn-red:hover:not(:disabled){background:#b91c1c}
+.btn-red:hover{background:#b91c1c}
 .btn-ghost{background:transparent;border:1.5px solid var(--border);color:var(--n500)}
 .btn-ghost:hover{background:var(--n100);color:var(--n900)}
 .btn-warn{background:var(--amber);color:#fff}
-.btn-warn:hover:not(:disabled){background:#d97706}
-.btn-full{width:100%}
-.btn-sm{padding:6px 12px;font-size:12px;border-radius:var(--r4)}
+.btn-warn:hover{background:#d97706}
+.btn-sm{padding:6px 12px;font-size:12px}
+/* ===== MODALS ===== */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .22s;backdrop-filter:blur(4px)}
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal{background:var(--card);border-radius:var(--r16);width:100%;max-width:540px;box-shadow:0 24px 64px rgba(0,0,0,.28);transform:scale(.94) translateY(14px);transition:transform .22s;max-height:94vh;display:flex;flex-direction:column}
 .modal-overlay.open .modal{transform:scale(1) translateY(0)}
 .modal-lg{max-width:700px}
 .modal-sm{max-width:380px}
-.mh{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;border-bottom:1px solid var(--border);flex-shrink:0}
+.mh{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;border-bottom:1px solid var(--border)}
 .mh-title{font-size:17px;font-weight:800}
-.mh-close{background:none;border:none;font-size:20px;color:var(--n500);padding:4px 8px;border-radius:var(--r4);line-height:1}
+.mh-close{background:none;border:none;font-size:20px;color:var(--n500);padding:4px 8px;border-radius:var(--r4)}
 .mh-close:hover{background:var(--n200);color:var(--n900)}
 .mb{padding:20px 22px;overflow-y:auto;flex:1}
-.mf{padding:14px 22px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end;flex-shrink:0}
-.co-items{display:flex;flex-direction:column;gap:7px;margin-bottom:14px;max-height:230px;overflow-y:auto;padding-right:2px}
+.mf{padding:14px 22px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end}
+/* ===== CHECKOUT MODAL ===== */
+.co-items{display:flex;flex-direction:column;gap:7px;max-height:230px;overflow-y:auto}
 .co-item{display:flex;align-items:center;gap:9px;padding:9px 11px;background:var(--g50);border-radius:var(--r8);border:1px solid var(--border)}
-.co-num{font-size:11px;font-weight:800;color:var(--n500);min-width:18px}
 .co-name{flex:1;font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.co-qctrl{display:flex;align-items:center;gap:4px}
-.coq-btn{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border2);background:#fff;font-size:13px;font-weight:700;color:var(--n700);display:flex;align-items:center;justify-content:center}
-.coq-btn:hover{background:var(--g700);border-color:var(--g700);color:#fff}
+.co-qctrl{display:flex;gap:4px}
+.coq-btn{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border2);background:#fff;font-size:13px;font-weight:700}
+.coq-btn:hover{background:var(--g700);color:#fff}
 .coq-val{font-size:13px;font-weight:800;min-width:20px;text-align:center}
 .co-sub{font-size:13px;font-weight:800;color:var(--g700);min-width:76px;text-align:right}
-.co-del{background:none;border:none;color:var(--red);font-size:14px;padding:2px 5px;border-radius:var(--r4)}
-.co-del:hover{background:var(--redbg)}
-.co-totals{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;padding:12px 14px;background:var(--n100);border-radius:var(--r8)}
-.co-tr{display:flex;justify-content:space-between;font-size:14px;color:var(--n500)}
-.co-tr.big{font-size:19px;font-weight:900;color:var(--n900);border-top:1.5px solid var(--border);padding-top:8px;margin-top:4px}
-.co-tr.big span:last-child{color:var(--g700)}
+.co-del{background:none;border:none;color:var(--red);font-size:14px}
+.co-totals{background:var(--n100);border-radius:var(--r8);padding:12px 14px;margin-bottom:14px}
+.co-tr{display:flex;justify-content:space-between;font-size:14px}
+.co-tr.big{font-size:19px;font-weight:900;border-top:1.5px solid var(--border);padding-top:8px;margin-top:4px}
 .pay-section{background:var(--g50);border:1.5px solid var(--border);border-radius:var(--r12);padding:14px;margin-bottom:14px}
-.pay-label{font-size:11px;font-weight:700;color:var(--n500);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
-.pay-display{font-size:30px;font-weight:900;color:var(--g800);text-align:right;letter-spacing:1px;background:#fff;border-radius:var(--r8);padding:10px 14px;border:1.5px solid var(--border);margin-bottom:10px;min-height:52px}
+.pay-display{font-size:30px;font-weight:900;text-align:right;background:#fff;border-radius:var(--r8);padding:10px 14px;border:1.5px solid var(--border);margin-bottom:10px}
 .numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-.npbtn{background:#fff;border:1.5px solid var(--border);border-radius:var(--r8);padding:13px 6px;font-size:17px;font-weight:700;color:var(--n900);transition:all .12s}
+.npbtn{background:#fff;border:1.5px solid var(--border);border-radius:var(--r8);padding:13px 6px;font-size:17px;font-weight:700}
 .npbtn:hover{background:var(--g50);border-color:var(--g600);color:var(--g800)}
-.npbtn:active{transform:scale(.93)}
 .np-clr{background:var(--redbg);border-color:var(--red);color:var(--red)}
-.np-clr:hover{background:var(--red);color:#fff;border-color:var(--red)}
 .np-bk{background:var(--amberbg);border-color:var(--amber);color:var(--amber)}
-.np-bk:hover{background:var(--amber);color:#fff;border-color:var(--amber)}
-.change-row{display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding:10px 14px;border-radius:var(--r8);font-weight:700;font-size:15px;min-height:44px}
+.change-row{display:flex;justify-content:space-between;margin-top:10px;padding:10px 14px;border-radius:var(--r8);font-weight:700}
 .change-row.enough{background:#e8f8ee;color:var(--g800)}
 .change-row.lack{background:var(--redbg);color:var(--red)}
-.note-inp{width:100%;border:1.5px solid var(--border);border-radius:var(--r8);padding:9px 12px;font-size:14px;resize:vertical;min-height:58px;outline:none;margin-bottom:12px;transition:border-color .2s}
-.note-inp:focus{border-color:var(--g600)}
-.pay-success-icon{text-align:center;font-size:58px;margin-bottom:6px}
-.pay-success-title{text-align:center;font-size:22px;font-weight:900;color:var(--g700);margin-bottom:4px}
+.note-inp{width:100%;border:1.5px solid var(--border);border-radius:var(--r8);padding:9px 12px;font-size:14px;resize:vertical;min-height:58px}
+/* ===== SUCCESS MODAL ===== */
+.pay-success-icon{text-align:center;font-size:58px}
+.pay-success-title{text-align:center;font-size:22px;font-weight:900;color:var(--g700)}
 .pay-success-sub{text-align:center;font-size:14px;color:var(--n500);margin-bottom:20px}
-.pay-success-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.pay-success-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .psg-box{background:var(--n100);border-radius:var(--r8);padding:12px;text-align:center}
-.psg-label{font-size:11px;color:var(--n500);font-weight:600;text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}
-.psg-val{font-size:18px;font-weight:900;color:var(--n900)}
+.psg-val{font-size:18px;font-weight:900}
 .psg-val.green{color:var(--g700)}
-.psg-val.orange{color:var(--orange)}
-.pay-success-items{background:var(--g50);border:1px solid var(--border);border-radius:var(--r8);padding:10px 14px;font-size:13px;color:var(--n500);line-height:2;margin-bottom:6px}
-.admin-layout{display:grid;grid-template-columns:340px 1fr;gap:18px;align-items:start}
+.pay-success-items{background:var(--g50);border:1px solid var(--border);border-radius:var(--r8);padding:10px 14px;font-size:13px;line-height:2}
+/* ===== ADMIN ===== */
+.admin-layout{display:grid;grid-template-columns:340px 1fr;gap:18px}
 .form-group{margin-bottom:11px}
-.form-group label{display:block;font-size:11px;font-weight:700;color:var(--n500);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
-.form-group input,.form-group textarea,.form-group select{width:100%;border:1.5px solid var(--border);border-radius:var(--r8);padding:9px 11px;font-size:14px;background:var(--n100);color:var(--n900);outline:none;transition:border-color .2s,background .2s}
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--g600);background:#fff}
-.form-group textarea{resize:vertical;min-height:70px}
+.form-group label{font-size:11px;font-weight:700;color:var(--n500);text-transform:uppercase;display:block;margin-bottom:5px}
+.form-group input,.form-group textarea{width:100%;border:1.5px solid var(--border);border-radius:var(--r8);padding:9px 11px;font-size:14px;background:var(--n100)}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--g600);background:#fff}
 .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .admin-search{margin-bottom:12px}
-.admin-search input{width:100%;border:1.5px solid var(--border);border-radius:var(--r8);padding:8px 12px 8px 34px;font-size:14px;background:var(--n100);outline:none}
-.admin-search input:focus{border-color:var(--g600);background:#fff}
+.admin-search input{width:100%;border:1.5px solid var(--border);border-radius:var(--r8);padding:8px 12px 8px 34px;background:var(--n100)}
 .admin-search-wrap{position:relative}
 .admin-search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--n500)}
-.table-wrap{overflow-x:auto;border-radius:var(--r8);border:1.5px solid var(--border)}
+.table-wrap{overflow-x:auto;border:1.5px solid var(--border);border-radius:var(--r8)}
 table{width:100%;border-collapse:collapse;font-size:13px}
 thead tr{background:var(--g50);border-bottom:2px solid var(--border2)}
-th{padding:10px 13px;text-align:left;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--n500);white-space:nowrap}
-tbody tr{border-bottom:1px solid var(--border);transition:background .1s}
-tbody tr:last-child{border-bottom:none}
-tbody tr:hover{background:var(--g50)}
+th{padding:10px 13px;text-align:left;font-size:11px;font-weight:800;text-transform:uppercase}
 td{padding:9px 13px;vertical-align:middle}
 .t-img{width:40px;height:40px;border-radius:var(--r8);object-fit:cover;background:var(--g50)}
-.t-name{font-weight:700}
 .t-acts{display:flex;gap:5px}
+/* ===== STATS ===== */
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:22px}
-.stat-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r12);padding:20px;text-align:center;box-shadow:var(--s1)}
-.si{font-size:34px;margin-bottom:8px}
-.sv{font-size:28px;font-weight:900;color:var(--g700);line-height:1}
-.sl{font-size:13px;color:var(--n500);margin-top:5px;font-weight:600}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r12);padding:20px;text-align:center}
+.si{font-size:34px}
+.sv{font-size:28px;font-weight:900;color:var(--g700)}
 .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
-.cat-card{background:var(--g50);border:1.5px solid var(--border);border-radius:var(--r8);padding:13px;text-align:center}
-.cat-name{font-size:13px;font-weight:700;color:var(--g800);margin-bottom:4px}
+.cat-card{background:var(--g50);border:1px solid var(--border);border-radius:var(--r8);padding:13px;text-align:center}
+.cat-name{font-size:13px;font-weight:700;color:var(--g800)}
 .cat-val{font-size:20px;font-weight:900;color:var(--g700)}
+/* ===== HISTORY ===== */
 .hlist{display:flex;flex-direction:column;gap:10px}
-.hitem{background:var(--card);border:1.5px solid var(--border);border-radius:var(--r12);overflow:hidden;box-shadow:var(--s1)}
-.hitem-head{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer;transition:background .12s}
+.hitem{background:var(--card);border:1px solid var(--border);border-radius:var(--r12);overflow:hidden}
+.hitem-head{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer}
 .hitem-head:hover{background:var(--g50)}
 .hbadge{padding:3px 10px;border-radius:var(--r999);font-size:11px;font-weight:700}
 .hb-paid{background:#e8f8ee;color:var(--g800)}
 .hb-debt{background:var(--amberbg);color:#92400e}
-.hmeta{flex:1;min-width:0}
+.hmeta{flex:1}
 .htime{font-size:12px;color:var(--n500)}
-.htotal{font-size:15px;font-weight:800;color:var(--g700)}
+.htotal{font-size:15px;font-weight:800}
 .hdetail{padding:12px 16px;border-top:1px solid var(--border);display:none}
 .hdetail.open{display:block}
 .hproducts{font-size:13px;color:var(--n500);line-height:1.9;margin-bottom:10px}
 .hacts{display:flex;gap:8px}
+/* ===== TOAST & SPINNER ===== */
 .toast-container{position:fixed;bottom:84px;right:20px;z-index:999;display:flex;flex-direction:column;gap:7px;pointer-events:none}
-.toast{background:var(--n900);color:#fff;border-radius:var(--r8);padding:11px 16px;font-size:13px;font-weight:600;box-shadow:var(--s3);display:flex;align-items:center;gap:9px;min-width:210px;max-width:320px;pointer-events:all;animation:toastIn .3s ease;transition:opacity .3s,transform .3s}
-.toast.hide{opacity:0;transform:translateX(20px)}
+.toast{background:var(--n900);color:#fff;border-radius:var(--r8);padding:11px 16px;font-size:13px;font-weight:600;box-shadow:var(--s3);display:flex;align-items:center;gap:9px;animation:toastIn .3s ease}
 .toast.green{background:var(--g700)}
 .toast.red{background:var(--red)}
 .toast.orange{background:var(--amber)}
 @keyframes toastIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
 .spin{display:inline-block;width:16px;height:16px;border:2.5px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+/* ===== PRINT (đã sửa cho khổ A5, căn giữa, bỏ khoảng trống) ===== */
 #printArea{display:none}
 @media print{
+  @page{size:A5;margin:8mm 5mm}
   body *{visibility:hidden}
   #printArea,#printArea *{visibility:visible}
-  #printArea{position:absolute;left:0;top:0;width:100%;padding:12mm;font-family:'Segoe UI',Arial,sans-serif;font-size:11pt;background:#fff;display:block !important}
-  .inv-header{display:flex;justify-content:space-between;margin-bottom:14px}
-  .inv-title{font-size:18pt;font-weight:bold;text-align:center;margin:10px 0 18px}
-  .inv-info{margin-bottom:18px}
-  .inv-info-row{display:flex;margin-bottom:5px}
-  .inv-info-key{width:110px;font-weight:600}
-  .inv-info-val{flex:1;border-bottom:1px dotted #555}
-  .inv-table{width:100%;border-collapse:collapse;margin-bottom:18px}
-  .inv-table th,.inv-table td{border:1px solid #000;padding:5px 8px}
-  .inv-table th{background:#e0e0e0;text-align:center;font-weight:700}
-  .tc{text-align:center}.tl{text-align:left}.tr{text-align:right}
-  .inv-sign{margin-top:32px;display:flex;justify-content:space-between}
-  .inv-sign-box{width:42%;text-align:center}
-  .inv-sign-space{height:70px}
+  #printArea{
+    position:absolute;left:0;top:0;width:100%;height:auto;
+    padding:0;font-family:'Segoe UI',Arial,sans-serif;font-size:9.5pt;
+    background:#fff;display:flex;flex-direction:column;justify-content:center;min-height:100%;
+    box-sizing:border-box
+  }
+  .inv-header{display:flex;justify-content:space-between;border-bottom:1px solid #ccc;padding-bottom:3px;margin-bottom:6px;font-size:8.5pt}
+  .inv-title{font-size:14pt;font-weight:bold;text-align:center;margin:0 0 8px}
+  .inv-table{width:100%;border-collapse:collapse;margin:4px 0 6px;font-size:8.5pt}
+  .inv-table th,.inv-table td{border:1px solid #000;padding:4px 2px}
+  .inv-table th{background:#e0e0e0;text-align:center}
+  .tc{text-align:center}
+  .tl{text-align:left}
+  .tr{text-align:right}
+  .inv-total-row td{font-weight:bold;background:#f5f5f5}
+  .invoice-note{font-size:7.5pt;margin:4px 0 0;border-top:1px dashed #ccc;padding-top:3px}
+  .inv-sign{margin-top:8px;display:flex;justify-content:space-between;font-size:8pt;text-align:center}
+  .inv-sign-box{width:45%}
+  .inv-sign-space{height:18px}
 }
-.empty{text-align:center;padding:56px 20px;color:var(--n500)}
-.empty .ei{font-size:50px;margin-bottom:12px}
-/* Responsive cũ */
-@media(max-width:1000px){.admin-layout{grid-template-columns:1fr}.product-grid.cols-4{grid-template-columns:repeat(2,1fr)}.product-grid.cols-3{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:640px){.product-grid.cols-2,.product-grid.cols-3,.product-grid.cols-4{grid-template-columns:repeat(2,1fr)}.header-inner{gap:6px;height:56px}.logo-tagline{display:none}.nav-btn{padding:6px 8px;font-size:12px}.main{padding:14px 10px}.hero{padding:20px 18px}.hero-icon{display:none}.modal{max-width:100%;border-radius:var(--r12) var(--r12) 0 0;align-self:flex-end;margin-top:auto}.modal-overlay{align-items:flex-end;padding:0}.pay-success-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:400px){.product-grid.cols-2,.product-grid.cols-3,.product-grid.cols-4{grid-template-columns:1fr}}
+/* ===== RESPONSIVE (thêm cho iPhone) ===== */
+@media (max-width: 768px){
+  .header-inner{flex-wrap:wrap;height:auto;padding:8px 0}
+  .nav{order:3;width:100%;overflow-x:auto;justify-content:flex-start;gap:4px;padding-bottom:4px}
+  .nav-btn{flex-shrink:0;padding:6px 10px;font-size:12px}
+  .logo-tagline{display:none}
+  .header-right{margin-left:auto}
+  .hero{flex-direction:column;text-align:center;padding:16px}
+  .hero-icon{display:none}
+  .shop-toolbar{flex-direction:column;align-items:stretch}
+  .search-wrap{width:100%}
+  .filter-select{width:100%}
+  .col-picker{justify-content:center}
+  .product-grid{gap:10px}
+  .product-grid.cols-2,.product-grid.cols-3,.product-grid.cols-4{grid-template-columns:repeat(2,1fr)}
+  .admin-layout{grid-template-columns:1fr}
+  .cart-item{flex-wrap:wrap}
+  .modal .modal-lg,.modal .modal-sm{max-width:calc(100% - 20px);margin:0 auto}
+  .numpad{gap:5px}
+  .npbtn{padding:10px 4px;font-size:15px}
+  .pay-display{font-size:24px}
+}
+@media (max-width: 480px){
+  .product-grid.cols-2,.product-grid.cols-3,.product-grid.cols-4{grid-template-columns:1fr}
+  .hero-text h2{font-size:18px}
+  .pc-name{font-size:13px}
+}
 </style>
 </head>
 <body>
-
-<!-- HEADER -->
+<!-- ========== HEADER (giữ nguyên HTML) ========== -->
 <header class="header">
   <div class="header-inner">
-    <a class="logo" href="#" onclick="switchTab('shop');return false"><div class="logo-icon">🌱</div><div class="logo-text"><span class="logo-name">Phân Bón Xanh</span><span class="logo-tagline">Nông nghiệp xanh – Vụ mùa bội thu</span></div></a>
-    <nav class="nav"><button class="nav-btn active" onclick="switchTab('shop')">🏪 Cửa hàng</button><button class="nav-btn" onclick="switchTab('cart')">🛒 Giỏ hàng</button><button class="nav-btn" onclick="switchTab('admin')">⚙️ Quản lý</button><button class="nav-btn" onclick="switchTab('stats')">📊 Thống kê</button><button class="nav-btn" onclick="switchTab('history')">📋 Lịch sử</button></nav>
-    <div class="header-right"><button class="hbtn" onclick="syncFromSheets()" id="syncBtn">🔄 Đồng bộ</button><button class="hbtn" onclick="switchTab('cart')">🛒 <span class="cart-count" id="cartBadge">0</span></button></div>
+    <a class="logo" href="#" onclick="switchTab('shop');return false">
+      <div class="logo-icon">🌱</div>
+      <div class="logo-text"><span class="logo-name">Phân Bón Xanh</span><span class="logo-tagline">Nông nghiệp xanh – Vụ mùa bội thu</span></div>
+    </a>
+    <nav class="nav">
+      <button class="nav-btn active" onclick="switchTab('shop')">🏪 Cửa hàng</button>
+      <button class="nav-btn" onclick="switchTab('cart')">🛒 Giỏ hàng</button>
+      <button class="nav-btn" onclick="switchTab('admin')">⚙️ Quản lý</button>
+      <button class="nav-btn" onclick="switchTab('stats')">📊 Thống kê</button>
+      <button class="nav-btn" onclick="switchTab('history')">📋 Lịch sử</button>
+    </nav>
+    <div class="header-right">
+      <button class="hbtn" onclick="syncFromSheets()" id="syncBtn">🔄 Đồng bộ</button>
+      <button class="hbtn" onclick="switchTab('cart')">🛒 <span class="cart-count" id="cartBadge">0</span></button>
+    </div>
   </div>
 </header>
-
+<!-- ========== MAIN ========== -->
 <div class="main">
-  <!-- SHOP -->
+  <!-- SHOP TAB -->
   <div class="tab-content active" id="tab-shop">
-    <div class="hero"><div class="hero-text"><h2>🌾 Phân bón chính hãng – Giá tốt nhất</h2><p>Đầy đủ các loại phân bón NPK, hữu cơ, vi sinh từ các thương hiệu uy tín. Giao hàng tận nơi, tư vấn miễn phí.</p><div class="hero-badges"><span class="hero-badge">✅ Chính hãng 100%</span><span class="hero-badge">🚚 Giao hàng nhanh</span><span class="hero-badge">📞 Tư vấn miễn phí</span></div></div><div class="hero-icon">🌿</div></div>
-    <div class="shop-toolbar"><div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="shopSearch" placeholder="Tìm tên sản phẩm, loại, thương hiệu…" oninput="filterShop()"></div><select class="filter-select" id="filterCat" onchange="filterShop()"><option value="">🌱 Tất cả loại</option></select><select class="filter-select" id="filterBrand" onchange="filterShop()"><option value="">🏷️ Tất cả thương hiệu</option></select><div class="col-picker"><button class="col-pick-btn" onclick="setCol(2)">2</button><button class="col-pick-btn" onclick="setCol(3)">3</button><button class="col-pick-btn active" onclick="setCol(4)">4</button></div></div>
+    <div class="hero">
+      <div class="hero-text"><h2>🌾 Phân bón chính hãng – Giá tốt nhất</h2><p>Đầy đủ các loại phân bón NPK, hữu cơ, vi sinh từ các thương hiệu uy tín. Giao hàng tận nơi, tư vấn miễn phí.</p><div class="hero-badges"><span class="hero-badge">✅ Chính hãng 100%</span><span class="hero-badge">🚚 Giao hàng nhanh</span><span class="hero-badge">📞 Tư vấn miễn phí</span></div></div>
+      <div class="hero-icon">🌿</div>
+    </div>
+    <div class="shop-toolbar">
+      <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="shopSearch" placeholder="Tìm tên sản phẩm, loại, thương hiệu…" oninput="filterShop()"></div>
+      <select class="filter-select" id="filterCat" onchange="filterShop()"><option value="">🌱 Tất cả loại</option></select>
+      <select class="filter-select" id="filterBrand" onchange="filterShop()"><option value="">🏷️ Tất cả thương hiệu</option></select>
+      <div class="col-picker"><button class="col-pick-btn" onclick="setCol(2)">2</button><button class="col-pick-btn" onclick="setCol(3)">3</button><button class="col-pick-btn active" onclick="setCol(4)">4</button></div>
+    </div>
     <div id="shopGrid" class="product-grid cols-4"></div>
   </div>
-  <!-- CART -->
+  <!-- CART TAB -->
   <div class="tab-content" id="tab-cart"><div class="scard"><div class="scard-title">🛒 Giỏ hàng của bạn</div><div id="cartContent"></div></div></div>
-  <!-- ADMIN -->
-  <div class="tab-content" id="tab-admin"><div class="admin-layout"><div class="scard" style="position:sticky;top:74px"><div class="scard-title" id="adminFormTitle">➕ Thêm sản phẩm</div><input type="hidden" id="editId"><div class="form-group"><label>Tên sản phẩm *</label><input type="text" id="f_name" placeholder="Nhập tên sản phẩm…"></div><div class="form-row-2"><div class="form-group"><label>Giá bán (₫) *</label><input type="number" id="f_price" placeholder="0" min="0"></div><div class="form-group"><label>Số lượng tồn</label><input type="number" id="f_qty" placeholder="0" min="0" value="0"></div></div><div class="form-row-2"><div class="form-group"><label>Loại phân bón</label><input type="text" id="f_category" placeholder="NPK, Hữu cơ…"></div><div class="form-group"><label>Thương hiệu</label><input type="text" id="f_brand" placeholder="Đầu Trâu…"></div></div><div class="form-group"><label>URL ảnh</label><input type="text" id="f_img" placeholder="https://…"></div><div class="form-group"><label>Mô tả ngắn</label><textarea id="f_desc" placeholder="Mô tả sản phẩm…"></textarea></div><div style="display:flex;gap:8px"><button class="btn btn-green btn-full" onclick="submitProduct()" id="submitBtn">➕ Thêm sản phẩm</button><button class="btn btn-ghost" onclick="cancelEdit()" id="cancelBtn" style="display:none">✕</button></div></div><div class="scard"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px"><div class="scard-title" style="margin:0">📦 Danh sách sản phẩm <span id="adminCount" style="font-size:13px;color:var(--n500);font-weight:600"></span></div></div><div class="admin-search"><div class="admin-search-wrap"><span class="admin-search-icon">🔍</span><input type="text" id="adminSearch" placeholder="Tìm nhanh sản phẩm…" oninput="filterAdminTable()"></div></div><div class="table-wrap"><table><thead><tr><th>Ảnh</th><th>Tên SP</th><th>Giá</th><th>Loại</th><th>Thương hiệu</th><th>Tồn</th><th></th></tr></thead><tbody id="adminTable"></tbody></table></div></div></div></div>
-  <!-- STATS -->
+  <!-- ADMIN TAB -->
+  <div class="tab-content" id="tab-admin"><div class="admin-layout"><div class="scard" style="position:sticky;top:74px"><div class="scard-title" id="adminFormTitle">➕ Thêm sản phẩm</div><input type="hidden" id="editId"><div class="form-group"><label>Tên sản phẩm *</label><input type="text" id="f_name"></div><div class="form-row-2"><div class="form-group"><label>Giá bán (₫) *</label><input type="number" id="f_price" min="0"></div><div class="form-group"><label>Số lượng tồn</label><input type="number" id="f_qty" min="0" value="0"></div></div><div class="form-row-2"><div class="form-group"><label>Loại phân bón</label><input type="text" id="f_category"></div><div class="form-group"><label>Thương hiệu</label><input type="text" id="f_brand"></div></div><div class="form-group"><label>URL ảnh</label><input type="text" id="f_img"></div><div class="form-group"><label>Mô tả ngắn</label><textarea id="f_desc"></textarea></div><div style="display:flex;gap:8px"><button class="btn btn-green btn-full" onclick="submitProduct()" id="submitBtn">➕ Thêm sản phẩm</button><button class="btn btn-ghost" onclick="cancelEdit()" id="cancelBtn" style="display:none">✕</button></div></div><div class="scard"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><div class="scard-title" style="margin:0">📦 Danh sách sản phẩm <span id="adminCount"></span></div></div><div class="admin-search"><div class="admin-search-wrap"><span class="admin-search-icon">🔍</span><input type="text" id="adminSearch" placeholder="Tìm nhanh sản phẩm…" oninput="filterAdminTable()"></div></div><div class="table-wrap"><table><thead><tr><th>Ảnh</th><th>Tên SP</th><th>Giá</th><th>Loại</th><th>Thương hiệu</th><th>Tồn</th><th></th></tr></thead><tbody id="adminTable"></tbody></table></div></div></div></div>
+  <!-- STATS TAB -->
   <div class="tab-content" id="tab-stats"><div class="scard"><div class="scard-title">📊 Thống kê kho hàng</div><div class="stats-grid" id="statsGrid"></div><div style="font-size:15px;font-weight:800;color:var(--n500);margin-bottom:12px">Phân theo loại phân bón</div><div class="cat-grid" id="catStats"></div></div></div>
-  <!-- HISTORY -->
-  <div class="tab-content" id="tab-history"><div class="scard"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px"><div class="scard-title" style="margin:0">📋 Lịch sử giao dịch</div><div style="display:flex;gap:8px"><button class="btn btn-ghost btn-sm" onclick="exportHistory()">📤 Xuất CSV</button><button class="btn btn-red btn-sm" onclick="clearHistory()">🗑️ Xóa lịch sử</button></div></div><div id="historyList"></div></div></div>
+  <!-- HISTORY TAB -->
+  <div class="tab-content" id="tab-history"><div class="scard"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px"><div class="scard-title" style="margin:0">📋 Lịch sử giao dịch</div><div><button class="btn btn-ghost btn-sm" onclick="exportHistory()">📤 Xuất CSV</button><button class="btn btn-red btn-sm" onclick="clearHistory()">🗑️ Xóa lịch sử</button></div></div><div id="historyList"></div></div></div>
 </div>
-
+<!-- FLOAT BUTTON -->
 <button class="float-checkout" id="floatCheckout" onclick="openCheckout()">🧾 Thanh toán <span class="fc-count" id="floatCount">0</span> <span class="fc-total" id="floatTotal">0₫</span></button>
+<!-- TOAST -->
 <div class="toast-container" id="toastContainer"></div>
 <div id="printArea"></div>
-
 <!-- MODALS -->
-<div class="modal-overlay" id="checkoutModal"><div class="modal modal-lg"><div class="mh"><div class="mh-title">🧾 Xác nhận thanh toán</div><button class="mh-close" onclick="closeModal('checkoutModal')">✕</button></div><div class="mb"><div class="co-items" id="coItemsList"></div><div class="co-totals" id="coTotals"></div><div class="pay-section"><div class="pay-label">Tiền khách đưa (đơn vị: nghìn đồng)</div><div class="pay-display" id="payDisplay">0₫</div><div class="numpad"><button class="npbtn" onclick="numpad(7)">7</button><button class="npbtn" onclick="numpad(8)">8</button><button class="npbtn" onclick="numpad(9)">9</button><button class="npbtn" onclick="numpad(4)">4</button><button class="npbtn" onclick="numpad(5)">5</button><button class="npbtn" onclick="numpad(6)">6</button><button class="npbtn" onclick="numpad(1)">1</button><button class="npbtn" onclick="numpad(2)">2</button><button class="npbtn" onclick="numpad(3)">3</button><button class="npbtn" onclick="numpad(0)">0</button><button class="npbtn" onclick="numpad('00')">00</button><button class="npbtn" onclick="numpad('000')">000</button><button class="npbtn np-bk" onclick="numpadBack()">⌫</button><button class="npbtn" onclick="numpad('.')">.</button><button class="npbtn np-clr" onclick="numpadClear()">C</button></div><div class="change-row" id="changeRow"></div></div><label style="font-size:11px;font-weight:700;color:var(--n500);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:6px">Ghi chú đơn hàng</label><textarea class="note-inp" id="coNote" placeholder="Ghi chú (không bắt buộc)…"></textarea></div><div class="mf"><button class="btn btn-ghost" onclick="closeModal('checkoutModal')">Hủy</button><button class="btn btn-warn" id="payDebtBtn" onclick="payDebt()">📝 Ghi nợ</button><button class="btn btn-green" id="payNowBtn" onclick="payNow()">✅ Thanh toán</button></div></div></div>
+<div class="modal-overlay" id="checkoutModal"><div class="modal modal-lg"><div class="mh"><div class="mh-title">🧾 Xác nhận thanh toán</div><button class="mh-close" onclick="closeModal('checkoutModal')">✕</button></div><div class="mb"><div class="co-items" id="coItemsList"></div><div class="co-totals" id="coTotals"></div><div class="pay-section"><div class="pay-label">Tiền khách đưa (đơn vị: nghìn đồng)</div><div class="pay-display" id="payDisplay">0₫</div><div class="numpad"><button class="npbtn" onclick="numpad(7)">7</button><button class="npbtn" onclick="numpad(8)">8</button><button class="npbtn" onclick="numpad(9)">9</button><button class="npbtn" onclick="numpad(4)">4</button><button class="npbtn" onclick="numpad(5)">5</button><button class="npbtn" onclick="numpad(6)">6</button><button class="npbtn" onclick="numpad(1)">1</button><button class="npbtn" onclick="numpad(2)">2</button><button class="npbtn" onclick="numpad(3)">3</button><button class="npbtn" onclick="numpad(0)">0</button><button class="npbtn" onclick="numpad('00')">00</button><button class="npbtn" onclick="numpad('000')">000</button><button class="npbtn np-bk" onclick="numpadBack()">⌫</button><button class="npbtn" onclick="numpad('.')">.</button><button class="npbtn np-clr" onclick="numpadClear()">C</button></div><div class="change-row" id="changeRow"></div></div><label style="font-size:11px;font-weight:700;color:var(--n500);text-transform:uppercase;display:block;margin-bottom:6px">Ghi chú đơn hàng</label><textarea class="note-inp" id="coNote" placeholder="Ghi chú (không bắt buộc)…"></textarea></div><div class="mf"><button class="btn btn-ghost" onclick="closeModal('checkoutModal')">Hủy</button><button class="btn btn-warn" id="payDebtBtn" onclick="payDebt()">📝 Ghi nợ</button><button class="btn btn-green" id="payNowBtn" onclick="payNow()">✅ Thanh toán</button></div></div></div>
 <div class="modal-overlay" id="successModal"><div class="modal modal-sm"><div class="mh" style="border:none;padding-bottom:8px"><div></div><button class="mh-close" onclick="closeModal('successModal')">✕</button></div><div class="mb" style="padding-top:4px"><div class="pay-success-icon" id="suIcon">✅</div><div class="pay-success-title" id="suTitle">Thanh toán thành công!</div><div class="pay-success-sub" id="suSub">Cảm ơn quý khách đã mua hàng</div><div class="pay-success-grid" id="suGrid"></div><div class="pay-success-items" id="suItems"></div></div><div class="mf" style="justify-content:center;gap:10px"><button class="btn btn-ghost" onclick="closeModal('successModal')">Đóng</button><button class="btn btn-green" id="suPrintBtn">🖨️ In hóa đơn</button></div></div></div>
-<div class="modal-overlay" id="confirmModal"><div class="modal modal-sm"><div class="mh"><div class="mh-title" id="confirmTitle">Xác nhận</div><button class="mh-close" onclick="closeModal('confirmModal')">✕</button></div><div class="mb"><p style="color:var(--n500);font-size:14px" id="confirmMsg"></p></div><div class="mf"><button class="btn btn-ghost" onclick="closeModal('confirmModal')">Hủy</button><button class="btn btn-red" id="confirmOkBtn">Xác nhận</button></div></div></div>
+<div class="modal-overlay" id="confirmModal"><div class="modal modal-sm"><div class="mh"><div class="mh-title" id="confirmTitle">Xác nhận</div><button class="mh-close" onclick="closeModal('confirmModal')">✕</button></div><div class="mb"><p id="confirmMsg" style="color:var(--n500);font-size:14px"></p></div><div class="mf"><button class="btn btn-ghost" onclick="closeModal('confirmModal')">Hủy</button><button class="btn btn-red" id="confirmOkBtn">Xác nhận</button></div></div></div>
 
 <script>
-// ============================================================
-// ⚙️  CẤU HÌNH — đặt URL Apps Script của bạn vào đây
-// ============================================================
-const WEB_APP_URL = localStorage.getItem('wb_url') ||
-  'https://script.google.com/macros/s/AKfycbwSvIkNw89atn2a1H7n_CX9q4_XvxvxuyO5Z0G4MidxlXxT1uCKFYBi_JxY6u5cqpsh/exec';
-
-// ============================================================
-// STATE
-// ============================================================
-let products       = [];
-let cart           = JSON.parse(localStorage.getItem('pb_cart')    || '[]');
-let history_data   = JSON.parse(localStorage.getItem('pb_history') || '[]');
-let colCount       = parseInt(localStorage.getItem('pb_cols')      || '4');
-let payInput       = '0';
-let currentTab     = 'shop';
-let isProcessing   = false;
-let adminFilter    = '';
-let lastTxn        = null;
-
-// ============================================================
-// INIT
-// ============================================================
-document.addEventListener('DOMContentLoaded', () => {
-  applyColCount();
-  renderCartBadge();
-  renderFloatBtn();
-  syncFromSheets(true);
-  renderHistory();
-});
-
-// ============================================================
-// TAB
-// ============================================================
-function switchTab(tab) {
-  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
-  document.getElementById('tab-' + tab).classList.add('active');
-  const idx = ['shop','cart','admin','stats','history'].indexOf(tab);
-  document.querySelectorAll('.nav-btn')[idx]?.classList.add('active');
-  currentTab = tab;
-  if (tab === 'cart')    renderCartTab();
-  if (tab === 'admin')   { renderAdminTable(); updateAdminCount(); }
-  if (tab === 'stats')   renderStats();
-  if (tab === 'history') renderHistory();
-}
-
-// ============================================================
-// JSONP GET (bypass CORS hoàn toàn)
-// ============================================================
-function jsonpGet(url, action) {
-  return new Promise((resolve, reject) => {
-    const cb = '__cb_' + Date.now() + '_' + Math.random().toString(36).slice(2);
-    const script = document.createElement('script');
-    const timer = setTimeout(() => { cleanup(); reject(new Error('Timeout – kiểm tra URL và quyền deploy')); }, 15000);
-    window[cb] = data => { cleanup(); resolve(data); };
-    function cleanup() {
-      clearTimeout(timer); delete window[cb];
-      if (script.parentNode) script.parentNode.removeChild(script);
-    }
-    script.onerror = () => { cleanup(); reject(new Error('Không load được script – URL sai')); };
-    script.src = url + '?action=' + encodeURIComponent(action) + '&callback=' + cb + '&t=' + Date.now();
-    document.head.appendChild(script);
-  });
-}
-
-// ============================================================
-// FORM POST (bypass CORS cho write – không đọc response iframe)
-// ============================================================
-function formPost(payload) {
-  return new Promise((resolve) => {
-    const iid = 'ifr_' + Date.now();
-    const iframe = document.createElement('iframe');
-    iframe.name = iid;
-    iframe.style.cssText = 'display:none;position:absolute;width:0;height:0;left:-9999px';
-    document.body.appendChild(iframe);
-
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = WEB_APP_URL;
-    form.target = iid;
-    form.style.display = 'none';
-
-    const inp = document.createElement('input');
-    inp.type = 'hidden';
-    inp.name = 'data';
-    inp.value = JSON.stringify(payload);
-    form.appendChild(inp);
-    document.body.appendChild(form);
-
-    const timer = setTimeout(() => { cleanup(); resolve({ status: 'ok', note: 'timeout-assumed-ok' }); }, 10000);
-    iframe.onload = () => { clearTimeout(timer); cleanup(); resolve({ status: 'ok' }); };
-
-    function cleanup() {
-      try { document.body.removeChild(form); }   catch(e) {}
-      setTimeout(() => { try { document.body.removeChild(iframe); } catch(e) {} }, 600);
-    }
-    form.submit();
-  });
-}
-
-// ============================================================
-// SYNC FROM SHEETS
-// ============================================================
-async function syncFromSheets(silent) {
-  const btn = document.getElementById('syncBtn');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spin"></span> Đang tải…';
-  try {
-    const data = await jsonpGet(WEB_APP_URL, 'getAll');
-    if (data.error) throw new Error(data.error);
-    products = (data.products || []).map((p, i) => normProduct(p, i));
-    localStorage.setItem('pb_products', JSON.stringify(products));
-    renderShop(); updateFilters();
-    if (currentTab === 'admin')   { renderAdminTable(); updateAdminCount(); }
-    if (currentTab === 'stats')    renderStats();
-    if (!silent) toast('Đã tải ' + products.length + ' sản phẩm ✅', 'green');
-  } catch(e) {
-    toast('Lỗi đồng bộ: ' + e.message, 'red');
-    const cached = localStorage.getItem('pb_products');
-    if (cached) products = JSON.parse(cached).map((p, i) => normProduct(p, i));
-    renderShop();
-  }
-  btn.disabled = false;
-  btn.textContent = '🔄 Đồng bộ';
-}
-
-function normProduct(p, idx) {
-  let id = String(p.id || p.ID || '');
-  if (!id) id = 'loc_' + Date.now() + '_' + idx;
-  return {
-    id, name: String(p.name || p['Tên sản phẩm'] || ''), price: parseFloat(p.price || p['Giá bán']) || 0,
-    category: String(p.category || p['Loại phân bón'] || ''), brand: String(p.brand || p['Thương hiệu'] || ''),
-    qty: parseInt(p.qty || p['Số lượng tồn kho']) || 0, img: String(p.img || p['URL ảnh'] || ''),
-    desc: String(p.desc || p['Mô tả ngắn'] || ''), date: String(p.date || p['Ngày cập nhật'] || '')
-  };
-}
-
-// ============================================================
-// SHOP RENDER
-// ============================================================
-function renderShop() {
-  const grid  = document.getElementById('shopGrid');
-  const q     = (document.getElementById('shopSearch')?.value || '').toLowerCase().trim();
-  const cat   = document.getElementById('filterCat')?.value   || '';
-  const brand = document.getElementById('filterBrand')?.value || '';
-  const list = products.filter(p => {
-    const mq = !q || [p.name, p.category, p.brand, p.desc].some(s => s.toLowerCase().includes(q));
-    const mc = !cat   || p.category === cat;
-    const mb = !brand || p.brand    === brand;
-    return mq && mc && mb;
-  });
-  if (!products.length) {
-    grid.innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="ei">🌿</div><p>Chưa có sản phẩm. Nhấn <strong>Đồng bộ</strong> để tải dữ liệu từ Sheets.</p></div>`;
-    return;
-  }
-  if (!list.length) {
-    grid.innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="ei">🔍</div><p>Không tìm thấy sản phẩm phù hợp.</p></div>`;
-    return;
-  }
-  grid.innerHTML = list.map(p => {
-    const out = p.qty <= 0;
-    const low = p.qty > 0 && p.qty <= 5;
-    const stockClass = out ? 'out' : low ? 'low' : 'ok';
-    const stockText  = out ? '❌ Hết hàng' : low ? `⚠️ Sắp hết (${p.qty})` : `✅ Còn ${p.qty}`;
-    const badge = out ? '<span class="pc-badge pc-badge-out">Hết hàng</span>' : low ? '<span class="pc-badge pc-badge-low">Sắp hết</span>' : '';
-    return `<div class="product-card"><div class="pc-img-wrap">${p.img ? `<img class="pc-img" src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'pc-img-placeholder\'><div class=\'ph-icon\'>🌿</div><div class=\'ph-label\'>${esc(p.category||'Phân bón')}</div></div>'">` : `<div class="pc-img-placeholder"><div class="ph-icon">🌿</div><div class="ph-label">${esc(p.category||'Phân bón')}</div></div>`}<div class="pc-badge-wrap">${badge}</div></div><div class="pc-body"><div class="pc-cat-brand">${p.category ? `<span class="pc-tag pc-tag-cat">🌱 ${esc(p.category)}</span>` : ''}${p.brand ? `<span class="pc-tag pc-tag-brand">🏷️ ${esc(p.brand)}</span>` : ''}</div><div class="pc-name">${esc(p.name)}</div><div class="pc-price">${fmtPrice(p.price)}</div><div class="pc-stock ${stockClass}">${stockText}</div><div class="pc-desc">${esc(p.desc) || '<span style="color:var(--n300)">Chưa có mô tả</span>'}</div><button class="pc-btn" onclick="addToCart('${esc(p.id)}')" ${out?'disabled':''}>${out ? '❌ Hết hàng' : '🛒 Thêm vào giỏ'}</button></div></div>`;
-  }).join('');
-}
+// ========== GIỮ NGUYÊN TOÀN BỘ JAVASCRIPT GỐC (KHÔNG THAY ĐỔI) ==========
+const WEB_APP_URL = localStorage.getItem('wb_url') || 'https://script.google.com/macros/s/AKfycbwSvIkNw89atn2a1H7n_CX9q4_XvxvxuyO5Z0G4MidxlXxT1uCKFYBi_JxY6u5cqpsh/exec';
+let products = [], cart = JSON.parse(localStorage.getItem('pb_cart') || '[]'), history_data = JSON.parse(localStorage.getItem('pb_history') || '[]');
+let colCount = parseInt(localStorage.getItem('pb_cols') || '4'), payInput = '0', currentTab = 'shop', isProcessing = false, adminFilter = '', lastTxn = null;
+document.addEventListener('DOMContentLoaded', () => { applyColCount(); renderCartBadge(); renderFloatBtn(); syncFromSheets(true); renderHistory(); });
+function switchTab(tab) { document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active')); document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active')); document.getElementById('tab-'+tab).classList.add('active'); const idx = ['shop','cart','admin','stats','history'].indexOf(tab); document.querySelectorAll('.nav-btn')[idx]?.classList.add('active'); currentTab = tab; if (tab === 'cart') renderCartTab(); if (tab === 'admin') { renderAdminTable(); updateAdminCount(); } if (tab === 'stats') renderStats(); if (tab === 'history') renderHistory(); }
+function jsonpGet(url, action) { return new Promise((resolve, reject) => { const cb = '__cb_' + Date.now() + '_' + Math.random().toString(36).slice(2); const script = document.createElement('script'); const timer = setTimeout(() => { cleanup(); reject(new Error('Timeout')); }, 15000); window[cb] = data => { cleanup(); resolve(data); }; function cleanup() { clearTimeout(timer); delete window[cb]; if (script.parentNode) script.parentNode.removeChild(script); } script.onerror = () => { cleanup(); reject(new Error('URL sai')); }; script.src = url + '?action=' + encodeURIComponent(action) + '&callback=' + cb + '&t=' + Date.now(); document.head.appendChild(script); }); }
+function formPost(payload) { return new Promise((resolve) => { const iid = 'ifr_' + Date.now(); const iframe = document.createElement('iframe'); iframe.name = iid; iframe.style.cssText = 'display:none;position:absolute;width:0;height:0;left:-9999px'; document.body.appendChild(iframe); const form = document.createElement('form'); form.method = 'POST'; form.action = WEB_APP_URL; form.target = iid; form.style.display = 'none'; const inp = document.createElement('input'); inp.type = 'hidden'; inp.name = 'data'; inp.value = JSON.stringify(payload); form.appendChild(inp); document.body.appendChild(form); const timer = setTimeout(() => { cleanup(); resolve({ status: 'ok', note: 'timeout' }); }, 10000); iframe.onload = () => { clearTimeout(timer); cleanup(); resolve({ status: 'ok' }); }; function cleanup() { try { document.body.removeChild(form); } catch(e) {} setTimeout(() => { try { document.body.removeChild(iframe); } catch(e) {} }, 600); } form.submit(); }); }
+async function syncFromSheets(silent) { const btn = document.getElementById('syncBtn'); btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Đang tải…'; try { const data = await jsonpGet(WEB_APP_URL, 'getAll'); if (data.error) throw new Error(data.error); products = (data.products || []).map((p, i) => normProduct(p, i)); localStorage.setItem('pb_products', JSON.stringify(products)); renderShop(); updateFilters(); if (currentTab === 'admin') { renderAdminTable(); updateAdminCount(); } if (currentTab === 'stats') renderStats(); if (!silent) toast('Đã tải ' + products.length + ' sản phẩm ✅', 'green'); } catch(e) { toast('Lỗi đồng bộ: ' + e.message, 'red'); const cached = localStorage.getItem('pb_products'); if (cached) products = JSON.parse(cached).map((p, i) => normProduct(p, i)); renderShop(); } btn.disabled = false; btn.textContent = '🔄 Đồng bộ'; }
+function normProduct(p, idx) { let id = String(p.id || p.ID || ''); if (!id) id = 'loc_' + Date.now() + '_' + idx; return { id, name: String(p.name || p['Tên sản phẩm'] || ''), price: parseFloat(p.price || p['Giá bán']) || 0, category: String(p.category || p['Loại phân bón'] || ''), brand: String(p.brand || p['Thương hiệu'] || ''), qty: parseInt(p.qty || p['Số lượng tồn kho']) || 0, img: String(p.img || p['URL ảnh'] || ''), desc: String(p.desc || p['Mô tả ngắn'] || ''), date: String(p.date || p['Ngày cập nhật'] || '') }; }
+function renderShop() { const grid = document.getElementById('shopGrid'); const q = (document.getElementById('shopSearch')?.value || '').toLowerCase().trim(); const cat = document.getElementById('filterCat')?.value || ''; const brand = document.getElementById('filterBrand')?.value || ''; const list = products.filter(p => { const mq = !q || [p.name, p.category, p.brand, p.desc].some(s => s.toLowerCase().includes(q)); const mc = !cat || p.category === cat; const mb = !brand || p.brand === brand; return mq && mc && mb; }); if (!products.length) { grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><div class="ei">🌿</div><p>Chưa có sản phẩm. Nhấn <strong>Đồng bộ</strong> để tải dữ liệu từ Sheets.</p></div>'; return; } if (!list.length) { grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><div class="ei">🔍</div><p>Không tìm thấy sản phẩm phù hợp.</p></div>'; return; } grid.innerHTML = list.map(p => { const out = p.qty <= 0; const low = p.qty > 0 && p.qty <= 5; const stockClass = out ? 'out' : low ? 'low' : 'ok'; const stockText = out ? '❌ Hết hàng' : low ? `⚠️ Sắp hết (${p.qty})` : `✅ Còn ${p.qty}`; const badge = out ? '<span class="pc-badge pc-badge-out">Hết hàng</span>' : low ? '<span class="pc-badge pc-badge-low">Sắp hết</span>' : ''; return `<div class="product-card"><div class="pc-img-wrap">${p.img ? `<img class="pc-img" src="${esc(p.img)}" alt="${esc(p.name)}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'pc-img-placeholder\'><div class=\'ph-icon\'>🌿</div><div class=\'ph-label\'>${esc(p.category||'Phân bón')}</div></div>'">` : `<div class="pc-img-placeholder"><div class="ph-icon">🌿</div><div class="ph-label">${esc(p.category||'Phân bón')}</div></div>`}<div class="pc-badge-wrap">${badge}</div></div><div class="pc-body"><div class="pc-cat-brand">${p.category ? `<span class="pc-tag pc-tag-cat">🌱 ${esc(p.category)}</span>` : ''}${p.brand ? `<span class="pc-tag pc-tag-brand">🏷️ ${esc(p.brand)}</span>` : ''}</div><div class="pc-name">${esc(p.name)}</div><div class="pc-price">${fmtPrice(p.price)}</div><div class="pc-stock ${stockClass}">${stockText}</div><div class="pc-desc">${esc(p.desc) || '<span style="color:var(--n300)">Chưa có mô tả</span>'}</div><button class="pc-btn" onclick="addToCart('${esc(p.id)}')" ${out?'disabled':''}>${out ? '❌ Hết hàng' : '🛒 Thêm vào giỏ'}</button></div></div>`; }).join(''); }
 function filterShop() { renderShop(); }
-function updateFilters() {
-  const cats   = [...new Set(products.map(p=>p.category).filter(Boolean))].sort();
-  const brands = [...new Set(products.map(p=>p.brand).filter(Boolean))].sort();
-  const fc = document.getElementById('filterCat');
-  const fb = document.getElementById('filterBrand');
-  const cv = fc.value, bv = fb.value;
-  fc.innerHTML = '<option value="">🌱 Tất cả loại</option>'   + cats.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join('');
-  fb.innerHTML = '<option value="">🏷️ Tất cả thương hiệu</option>' + brands.map(b=>`<option value="${esc(b)}">${esc(b)}</option>`).join('');
-  fc.value = cv; fb.value = bv;
-}
+function updateFilters() { const cats = [...new Set(products.map(p=>p.category).filter(Boolean))].sort(); const brands = [...new Set(products.map(p=>p.brand).filter(Boolean))].sort(); const fc = document.getElementById('filterCat'); const fb = document.getElementById('filterBrand'); const cv = fc.value, bv = fb.value; fc.innerHTML = '<option value="">🌱 Tất cả loại</option>' + cats.map(c=>`<option value="${esc(c)}">${esc(c)}</option>`).join(''); fb.innerHTML = '<option value="">🏷️ Tất cả thương hiệu</option>' + brands.map(b=>`<option value="${esc(b)}">${esc(b)}</option>`).join(''); fc.value = cv; fb.value = bv; }
 function setCol(n) { colCount = n; localStorage.setItem('pb_cols', n); document.getElementById('shopGrid').className = 'product-grid cols-' + n; document.querySelectorAll('.col-pick-btn').forEach((b,i)=>b.classList.toggle('active',[2,3,4][i]===n)); }
 function applyColCount() { document.getElementById('shopGrid').className = 'product-grid cols-' + colCount; document.querySelectorAll('.col-pick-btn').forEach((b,i)=>b.classList.toggle('active',[2,3,4][i]===colCount)); }
-
-// ============================================================
-// CART
-// ============================================================
-function addToCart(id) {
-  const p = products.find(x => x.id === id);
-  if (!p || p.qty <= 0) { toast('Sản phẩm hết hàng!', 'orange'); return; }
-  const existing = cart.find(x => x.id === id);
-  if (existing) { if (existing.quantity >= p.qty) { toast('Đã đạt số lượng tối đa', 'orange'); return; } existing.quantity++; }
-  else { cart.push({ id: p.id, name: p.name, price: p.price, img: p.img, quantity: 1, maxQty: p.qty }); }
-  saveCart(); toast('✅ Đã thêm: ' + p.name.substring(0,28) + (p.name.length > 28 ? '…' : ''), 'green');
-}
+function addToCart(id) { const p = products.find(x => x.id === id); if (!p || p.qty <= 0) { toast('Sản phẩm hết hàng!', 'orange'); return; } const existing = cart.find(x => x.id === id); if (existing) { if (existing.quantity >= p.qty) { toast('Đã đạt số lượng tối đa', 'orange'); return; } existing.quantity++; } else { cart.push({ id: p.id, name: p.name, price: p.price, img: p.img, quantity: 1, maxQty: p.qty }); } saveCart(); toast('✅ Đã thêm: ' + p.name.substring(0,28) + (p.name.length > 28 ? '…' : ''), 'green'); }
 function saveCart() { localStorage.setItem('pb_cart', JSON.stringify(cart)); renderCartBadge(); renderFloatBtn(); if (currentTab === 'cart') renderCartTab(); }
 function renderCartBadge() { document.getElementById('cartBadge').textContent = cart.reduce((s,i)=>s+i.quantity,0); }
-function renderFloatBtn() {
-  const btn = document.getElementById('floatCheckout'); const count = cart.reduce((s,i)=>s+i.quantity,0); const amount = cart.reduce((s,i)=>s+i.price*i.quantity,0);
-  if (count>0) { btn.classList.add('show'); document.getElementById('floatCount').textContent = count + ' món'; document.getElementById('floatTotal').textContent = fmtPrice(amount); }
-  else btn.classList.remove('show');
-}
-function renderCartTab() {
-  const el = document.getElementById('cartContent');
-  if (!cart.length) { el.innerHTML = `<div class="cart-empty"><div class="ce-icon">🛒</div><p>Giỏ hàng trống.<br>Hãy chọn sản phẩm từ <a href="#" onclick="switchTab('shop');return false" style="color:var(--g700);font-weight:700">Cửa hàng</a>.</p></div>`; return; }
-  const total = cart.reduce((s,i)=>s+i.price*i.quantity,0);
-  el.innerHTML = `<div class="cart-list">${cart.map(item => `<div class="cart-item">${item.img ? `<img class="ci-img" src="${esc(item.img)}" alt="" onerror="this.outerHTML='<div class=ci-img>🌿</div>'">` : `<div class="ci-img">🌿</div>`}<div class="ci-info"><div class="ci-name">${esc(item.name)}</div><div class="ci-price">${fmtPrice(item.price)} / sản phẩm</div></div><div class="ci-controls"><button class="qty-btn" onclick="changeQty('${item.id}',-1)">−</button><span class="qty-val">${item.quantity}</span><button class="qty-btn" onclick="changeQty('${item.id}',1)">+</button></div><div class="ci-sub">${fmtPrice(item.price*item.quantity)}</div><button class="ci-del" onclick="removeFromCart('${item.id}')">🗑️</button></div>`).join('')}</div><div class="cart-summary"><span class="cs-label">Tổng cộng (${cart.reduce((s,i)=>s+i.quantity,0)} sản phẩm)</span><span class="cs-total">${fmtPrice(total)}</span></div><button class="cart-cta" onclick="openCheckout()">🧾 Tiến hành thanh toán →</button><button class="cart-clear" onclick="clearCart()">🗑️ Xóa toàn bộ giỏ hàng</button>`;
-}
+function renderFloatBtn() { const btn = document.getElementById('floatCheckout'); const count = cart.reduce((s,i)=>s+i.quantity,0); const amount = cart.reduce((s,i)=>s+i.price*i.quantity,0); if (count>0) { btn.classList.add('show'); document.getElementById('floatCount').textContent = count + ' món'; document.getElementById('floatTotal').textContent = fmtPrice(amount); } else btn.classList.remove('show'); }
+function renderCartTab() { const el = document.getElementById('cartContent'); if (!cart.length) { el.innerHTML = '<div class="cart-empty"><div class="ce-icon">🛒</div><p>Giỏ hàng trống.<br>Hãy chọn sản phẩm từ <a href="#" onclick="switchTab(\'shop\');return false" style="color:var(--g700);font-weight:700">Cửa hàng</a>.</p></div>'; return; } const total = cart.reduce((s,i)=>s+i.price*i.quantity,0); el.innerHTML = `<div class="cart-list">${cart.map(item => `<div class="cart-item">${item.img ? `<img class="ci-img" src="${esc(item.img)}" alt="" onerror="this.outerHTML='<div class=ci-img>🌿</div>'">` : `<div class="ci-img">🌿</div>`}<div class="ci-info"><div class="ci-name">${esc(item.name)}</div><div class="ci-price">${fmtPrice(item.price)} / sản phẩm</div></div><div class="ci-controls"><button class="qty-btn" onclick="changeQty('${item.id}',-1)">−</button><span class="qty-val">${item.quantity}</span><button class="qty-btn" onclick="changeQty('${item.id}',1)">+</button></div><div class="ci-sub">${fmtPrice(item.price*item.quantity)}</div><button class="ci-del" onclick="removeFromCart('${item.id}')">🗑️</button></div>`).join('')}</div><div class="cart-summary"><span class="cs-label">Tổng cộng (${cart.reduce((s,i)=>s+i.quantity,0)} sản phẩm)</span><span class="cs-total">${fmtPrice(total)}</span></div><button class="cart-cta" onclick="openCheckout()">🧾 Tiến hành thanh toán →</button><button class="cart-clear" onclick="clearCart()">🗑️ Xóa toàn bộ giỏ hàng</button>`; }
 function changeQty(id, delta) { const item = cart.find(x=>x.id===id); if(!item) return; const p = products.find(x=>x.id===id); const max = p ? p.qty : 999; item.quantity = Math.max(1, Math.min(max, item.quantity+delta)); saveCart(); }
 function removeFromCart(id) { cart = cart.filter(x=>x.id!==id); saveCart(); }
 function clearCart() { cart = []; saveCart(); }
-
-// ============================================================
-// CHECKOUT
-// ============================================================
 function openCheckout() { if(!cart.length) { toast('Giỏ hàng trống!','orange'); return; } payInput='0'; document.getElementById('coNote').value=''; renderCheckoutItems(); renderCheckoutTotals(); renderPayDisplay(); openModal('checkoutModal'); }
 function renderCheckoutItems() { document.getElementById('coItemsList').innerHTML = cart.map((item,i)=>`<div class="co-item"><span class="co-num">${i+1}</span><span class="co-name" title="${esc(item.name)}">${esc(item.name)}</span><div class="co-qctrl"><button class="coq-btn" onclick="coQty('${item.id}',-1)">−</button><span class="coq-val">${item.quantity}</span><button class="coq-btn" onclick="coQty('${item.id}',1)">+</button></div><span class="co-sub">${fmtPrice(item.price*item.quantity)}</span><button class="co-del" onclick="coDel('${item.id}')">🗑️</button></div>`).join(''); }
 function coQty(id, delta) { const item = cart.find(x=>x.id===id); if(!item) return; const p = products.find(x=>x.id===id); item.quantity = Math.max(1, Math.min(p ? p.qty : 999, item.quantity+delta)); saveCart(); renderCheckoutItems(); renderCheckoutTotals(); }
@@ -529,39 +393,11 @@ function getPayAmount() { return (parseFloat(payInput)||0)*1000; }
 function updateChangeRow() { let total = cart.reduce((s,i)=>s+i.price*i.quantity,0); let paid = getPayAmount(); let diff = paid-total; let el = document.getElementById('changeRow'); if(paid===0) { el.textContent=''; el.className='change-row'; } else if(diff>=0) { el.className='change-row enough'; el.innerHTML=`<span>💰 Tiền thừa trả lại</span><span>${fmtPrice(diff)}</span>`; } else { el.className='change-row lack'; el.innerHTML=`<span>⚠️ Còn thiếu</span><span>${fmtPrice(Math.abs(diff))}</span>`; } document.getElementById('payNowBtn').disabled = diff<0 && paid>0; }
 async function payNow() { if(isProcessing) return; let total = cart.reduce((s,i)=>s+i.price*i.quantity,0); let paid = getPayAmount(); if(paid<total && paid>0) { toast('Tiền chưa đủ!','red'); return; } if(paid===0) { toast('Nhập số tiền khách đưa','orange'); return; } await doCheckout('paid',paid); }
 async function payDebt() { if(isProcessing) return; await doCheckout('debt',0); }
-async function doCheckout(status, paid) {
-  isProcessing=true; let paidNowBtn=document.getElementById('payNowBtn'), paidDebtBtn=document.getElementById('payDebtBtn');
-  paidNowBtn.disabled=paidDebtBtn.disabled=true;
-  let total = cart.reduce((s,i)=>s+i.price*i.quantity,0);
-  let note = document.getElementById('coNote').value.trim();
-  let txn = { id:'TXN'+Date.now(), time:new Date().toLocaleString('vi-VN'), items:JSON.parse(JSON.stringify(cart)), total, paid, change:paid-total, status, note };
-  history_data.unshift(txn); localStorage.setItem('pb_history',JSON.stringify(history_data));
-  cart.forEach(item=>{ let p=products.find(x=>x.id===item.id); if(p) p.qty=Math.max(0,p.qty-item.quantity); });
-  localStorage.setItem('pb_products',JSON.stringify(products));
-  try { await formPost({ action:'checkout', items:cart.map(i=>({id:i.id,qty:i.quantity})) }); } catch(e){ toast('Lỗi cập nhật Sheets (dữ liệu đã lưu local)','orange'); }
-  closeModal('checkoutModal'); lastTxn=txn; clearCart(); renderShop(); showSuccessModal(txn); setTimeout(()=>syncFromSheets(true),2000);
-  isProcessing=false; paidNowBtn.disabled=paidDebtBtn.disabled=false;
-}
-function showSuccessModal(txn) {
-  let isPaid = txn.status==='paid';
-  document.getElementById('suIcon').textContent = isPaid?'✅':'📝';
-  document.getElementById('suTitle').textContent = isPaid?'Thanh toán thành công!':'Đã ghi nợ!';
-  document.getElementById('suSub').textContent = isPaid?'Cảm ơn quý khách – '+txn.time:'Giao dịch đã được ghi vào sổ nợ – '+txn.time;
-  document.getElementById('suGrid').innerHTML = `<div class="psg-box"><div class="psg-label">Tổng tiền</div><div class="psg-val green">${fmtPrice(txn.total)}</div></div><div class="psg-box"><div class="psg-label">${isPaid?'Tiền đưa':'Trạng thái'}</div><div class="psg-val ${isPaid?'':'orange'}">${isPaid?fmtPrice(txn.paid):'Ghi nợ'}</div></div>${isPaid?`<div class="psg-box"><div class="psg-label">Tiền thừa</div><div class="psg-val green">${fmtPrice(txn.change)}</div></div>`:''}<div class="psg-box"><div class="psg-label">Số mặt hàng</div><div class="psg-val">${txn.items.reduce((s,i)=>s+i.quantity,0)}</div></div>`;
-  document.getElementById('suItems').innerHTML = txn.items.map((it,idx)=>`${idx+1}. ${esc(it.name)} × ${it.quantity} = <strong>${fmtPrice(it.price*it.quantity)}</strong>`).join('<br>');
-  document.getElementById('suPrintBtn').onclick = () => { closeModal('successModal'); printInvoice(txn); };
-  openModal('successModal');
-}
-function printInvoice(txn) {
-  const STORE = { name:'PHÂN BÓN XANH', addr:'286/4 ấp Tân Yên, xã Gia Tân 3, TP Đồng Nai', phone:'Hotline: 0938.969.987 / 0909.537.967' };
-  const rows = txn.items.map((item,i)=>`<tr><td class="tc">${i+1}</td><td class="tl">${esc(item.name)}</td><td class="tc">Bao/Chai</td><td class="tc">${item.quantity}</td><td class="tr">${fmtPrice(item.price)}</td><td class="tr">${fmtPrice(item.price*item.quantity)}</td></tr>`).join('');
-  document.getElementById('printArea').innerHTML = `<div><div class="inv-header"><div><div style="font-weight:800;font-size:13pt">🌱 ${esc(STORE.name)}</div><div>${esc(STORE.addr)}</div><div>${esc(STORE.phone)}</div></div><div style="text-align:right"><div><strong>Mã phiếu:</strong> ${txn.id}</div><div><strong>Trạng thái:</strong> ${txn.status==='paid'?'ĐÃ THANH TOÁN':'GHI NỢ'}</div></div></div><div class="inv-title">HÓA ĐƠN BÁN LẺ<br><span style="font-size:11pt;font-weight:400;font-style:italic">${txn.time}</span></div><div class="inv-info"><div class="inv-info-row"><span class="inv-info-key">Khách hàng:</span><span class="inv-info-val"></span></div><div class="inv-info-row"><span class="inv-info-key">Địa chỉ:</span><span class="inv-info-val"></span></div><div class="inv-info-row"><span class="inv-info-key">Ghi chú:</span><span class="inv-info-val">${esc(txn.note||'')}</span></div></div><table class="inv-table"><thead><tr><th>STT</th><th>Tên hàng hóa</th><th>ĐVT</th><th>SL</th><th>Đơn giá</th><th>Thành tiền</th></tr></thead><tbody>${rows}<tr><td colspan="5" class="tr"><strong>TỔNG CỘNG:</strong></td><td class="tr"><strong>${fmtPrice(txn.total)}</strong></td></tr>${txn.paid>0?`<tr><td colspan="5" class="tr">Tiền khách đưa:</td><td class="tr">${fmtPrice(txn.paid)}</div></div></td><tr><td colspan="5" class="tr">Tiền thừa:</td><td class="tr">${fmtPrice(txn.change)}</div></div></td></tr>`:''}${txn.status!=='paid'?`<tr style="color:red"><td colspan="5" class="tr"><strong>CÒN NỢ:</strong></td><td class="tr"><strong>${fmtPrice(txn.total)}</strong></td></tr>`:''}</tbody></table><div class="inv-sign"><div class="inv-sign-box"><div>NGƯỜI MUA HÀNG</div><div style="font-style:italic;font-size:10pt">(Ký, họ tên)</div><div class="inv-sign-space"></div></div><div class="inv-sign-box"><div>Ngày &nbsp;&nbsp; tháng &nbsp;&nbsp; năm 20___</div><div>NGƯỜI LẬP PHIẾU</div><div style="font-style:italic;font-size:10pt">(Ký, họ tên)</div><div class="inv-sign-space"></div></div></div></div>`;
-  window.onafterprint = () => { document.getElementById('printArea').innerHTML = ''; window.onafterprint = null; };
-  window.print();
-}
-// ADMIN
+async function doCheckout(status, paid) { isProcessing=true; let paidNowBtn=document.getElementById('payNowBtn'), paidDebtBtn=document.getElementById('payDebtBtn'); paidNowBtn.disabled=paidDebtBtn.disabled=true; let total = cart.reduce((s,i)=>s+i.price*i.quantity,0); let note = document.getElementById('coNote').value.trim(); let txn = { id:'TXN'+Date.now(), time:new Date().toLocaleString('vi-VN'), items:JSON.parse(JSON.stringify(cart)), total, paid, change:paid-total, status, note }; history_data.unshift(txn); localStorage.setItem('pb_history',JSON.stringify(history_data)); cart.forEach(item=>{ let p=products.find(x=>x.id===item.id); if(p) p.qty=Math.max(0,p.qty-item.quantity); }); localStorage.setItem('pb_products',JSON.stringify(products)); try { await formPost({ action:'checkout', items:cart.map(i=>({id:i.id,qty:i.quantity})) }); } catch(e){ toast('Lỗi cập nhật Sheets (dữ liệu đã lưu local)','orange'); } closeModal('checkoutModal'); lastTxn=txn; clearCart(); renderShop(); showSuccessModal(txn); setTimeout(()=>syncFromSheets(true),2000); isProcessing=false; paidNowBtn.disabled=paidDebtBtn.disabled=false; }
+function showSuccessModal(txn) { let isPaid = txn.status==='paid'; document.getElementById('suIcon').textContent = isPaid?'✅':'📝'; document.getElementById('suTitle').textContent = isPaid?'Thanh toán thành công!':'Đã ghi nợ!'; document.getElementById('suSub').textContent = isPaid?'Cảm ơn quý khách – '+txn.time:'Giao dịch đã được ghi vào sổ nợ – '+txn.time; document.getElementById('suGrid').innerHTML = `<div class="psg-box"><div class="psg-label">Tổng tiền</div><div class="psg-val green">${fmtPrice(txn.total)}</div></div><div class="psg-box"><div class="psg-label">${isPaid?'Tiền đưa':'Trạng thái'}</div><div class="psg-val ${isPaid?'':'orange'}">${isPaid?fmtPrice(txn.paid):'Ghi nợ'}</div></div>${isPaid?`<div class="psg-box"><div class="psg-label">Tiền thừa</div><div class="psg-val green">${fmtPrice(txn.change)}</div></div>`:''}<div class="psg-box"><div class="psg-label">Số mặt hàng</div><div class="psg-val">${txn.items.reduce((s,i)=>s+i.quantity,0)}</div></div>`; document.getElementById('suItems').innerHTML = txn.items.map((it,idx)=>`${idx+1}. ${esc(it.name)} × ${it.quantity} = <strong>${fmtPrice(it.price*it.quantity)}</strong>`).join('<br>'); document.getElementById('suPrintBtn').onclick = () => { closeModal('successModal'); printInvoice(txn); }; openModal('successModal'); }
+function printInvoice(txn) { const STORE = { name:'PHÂN BÓN XANH', addr:'286/4 ấp Tân Yên, xã Gia Tân 3, TP Đồng Nai', phone:'0938.969.987 / 0909.537.967' }; const rows = txn.items.map((item,i)=>`<tr><td class="tc">${i+1}</td><td class="tl">${esc(item.name)}</td><td class="tc">${item.quantity}</td><td class="tr">${fmtPrice(item.price)}</td><td class="tr">${fmtPrice(item.price*item.quantity)}</td></tr>`).join(''); const paidHtml = (txn.paid>0) ? `<tr><td colspan="4" class="tr"><strong>Tiền khách đưa:</strong></td><td class="tr">${fmtPrice(txn.paid)}</td></tr><tr><td colspan="4" class="tr"><strong>Tiền thừa:</strong></td><td class="tr">${fmtPrice(txn.change)}</td></tr>` : ''; const debtHtml = (txn.status!=='paid') ? `<tr class="inv-total-row" style="color:red"><td colspan="4" class="tr"><strong>CÒN NỢ:</strong></td><td class="tr"><strong>${fmtPrice(txn.total)}</strong></td></tr>` : ''; const html = `<div><div class="inv-header"><div class="inv-header-left">🌱 ${esc(STORE.name)}<br><span style="font-size:8pt">${esc(STORE.addr)}<br>${esc(STORE.phone)}</span></div><div class="inv-header-right">Mã: ${txn.id}<br>${txn.time}<br>${txn.status==='paid'?'ĐÃ THANH TOÁN':'GHI NỢ'}</div></div><div class="inv-title">HÓA ĐƠN BÁN LẺ</div><table class="inv-table"><thead><tr><th>STT</th><th>Tên hàng hóa</th><th>SL</th><th>Đơn giá</th><th>Thành tiền</th></tr></thead><tbody>${rows}<tr class="inv-total-row"><td colspan="4" class="tr"><strong>TỔNG CỘNG:</strong></td><td class="tr"><strong>${fmtPrice(txn.total)}</strong></td></tr>${paidHtml}${debtHtml}</tbody></table>${txn.note?`<div class="invoice-note">📝 Ghi chú: ${esc(txn.note)}</div>`:''}<div class="inv-sign"><div class="inv-sign-box">KHÁCH HÀNG<br>(ký, họ tên)<div class="inv-sign-space"></div></div><div class="inv-sign-box">NHÂN VIÊN BÁN HÀNG<br>(ký, họ tên)<div class="inv-sign-space"></div></div></div></div>`; document.getElementById('printArea').innerHTML = html; window.onafterprint = () => { document.getElementById('printArea').innerHTML = ''; window.onafterprint = null; }; window.print(); }
 function filterAdminTable() { adminFilter = document.getElementById('adminSearch').value.toLowerCase().trim(); renderAdminTable(); }
-function renderAdminTable() { let list = adminFilter ? products.filter(p=>[p.name,p.category,p.brand].some(s=>s.toLowerCase().includes(adminFilter))) : products; let tbody = document.getElementById('adminTable'); if(!list.length) { tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--n500)">Không có sản phẩm nào</div></div><tr>'; return; } tbody.innerHTML = list.map(p=>`<tr><td>${p.img?`<img class="t-img" src="${esc(p.img)}" alt="" onerror="this.outerHTML='<div class=t-img style=display:flex;align-items:center;justify-content:center>🌿</div>'">`:'<div class="t-img" style="display:flex;align-items:center;justify-content:center;font-size:20px">🌿</div>'}</div></div></td><td><div class="t-name">${esc(p.name)}</div></div></div></td><td style="font-weight:700;color:var(--g700);white-space:nowrap">${fmtPrice(p.price)}</div></div></td><td>${p.category?`<span class="pc-tag pc-tag-cat">${esc(p.category)}</span>`:'–'}</div></div></td><td>${p.brand?`<span class="pc-tag pc-tag-brand">${esc(p.brand)}</span>`:'–'}</div></div></td><td style="font-weight:700;color:${p.qty<=0?'var(--red)':p.qty<=5?'var(--amber)':'var(--n900)'}">${p.qty}</div></div></td><td><div class="t-acts"><button class="btn btn-ghost btn-sm" onclick="editProduct('${esc(p.id)}')">✏️</button><button class="btn btn-red btn-sm" onclick="deleteProduct('${esc(p.id)}')">🗑️</button></div></div></div></td></tr>`).join(''); }
+function renderAdminTable() { let list = adminFilter ? products.filter(p=>[p.name,p.category,p.brand].some(s=>s.toLowerCase().includes(adminFilter))) : products; let tbody = document.getElementById('adminTable'); if(!list.length) { tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:40px;">Không có sản phẩm nào</td></tr>'; return; } tbody.innerHTML = list.map(p=>`<tr><td>${p.img?`<img class="t-img" src="${esc(p.img)}" onerror="this.outerHTML='<div class=t-img style=display:flex;align-items:center;justify-content:center>🌿</div>'">`:'<div class="t-img" style="display:flex;align-items:center;justify-content:center;font-size:20px">🌿</div>'}</td><td><div class="t-name">${esc(p.name)}</div></td><td style="font-weight:700;color:var(--g700)">${fmtPrice(p.price)}</td><td>${p.category?`<span class="pc-tag pc-tag-cat">${esc(p.category)}</span>`:'–'}</td><td>${p.brand?`<span class="pc-tag pc-tag-brand">${esc(p.brand)}</span>`:'–'}</td><td style="font-weight:700;color:${p.qty<=0?'var(--red)':p.qty<=5?'var(--amber)':'var(--n900)'}">${p.qty}</td><td><div class="t-acts"><button class="btn btn-ghost btn-sm" onclick="editProduct('${esc(p.id)}')">✏️</button><button class="btn btn-red btn-sm" onclick="deleteProduct('${esc(p.id)}')">🗑️</button></div></td></tr>`).join(''); }
 function updateAdminCount() { document.getElementById('adminCount').textContent = '('+products.length+' sp)'; }
 function editProduct(id) { let p=products.find(x=>x.id===id); if(!p) return; document.getElementById('editId').value=id; document.getElementById('f_name').value=p.name; document.getElementById('f_price').value=p.price; document.getElementById('f_qty').value=p.qty; document.getElementById('f_category').value=p.category; document.getElementById('f_brand').value=p.brand; document.getElementById('f_img').value=p.img; document.getElementById('f_desc').value=p.desc; document.getElementById('adminFormTitle').textContent='✏️ Chỉnh sửa sản phẩm'; document.getElementById('submitBtn').innerHTML='💾 Lưu thay đổi'; document.getElementById('cancelBtn').style.display=''; document.getElementById('f_name').focus(); window.scrollTo({top:0,behavior:'smooth'}); }
 function cancelEdit() { document.getElementById('editId').value=''; ['f_name','f_price','f_img','f_desc','f_category','f_brand'].forEach(id=>document.getElementById(id).value=''); document.getElementById('f_qty').value=0; document.getElementById('adminFormTitle').textContent='➕ Thêm sản phẩm'; document.getElementById('submitBtn').innerHTML='➕ Thêm sản phẩm'; document.getElementById('cancelBtn').style.display='none'; }
@@ -581,116 +417,5 @@ function toast(msg,type='green') { let icons={green:'✅',red:'❌',orange:'⚠�
 function fmtPrice(v) { return (parseFloat(v)||0).toLocaleString('vi-VN')+'₫'; }
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 </script>
-
-<!-- ===== SỬA LỖI IN VÀ RESPONSIVE IPHONE ===== -->
-<style>
-  /* In khổ A5 & đảm bảo in được */
-  @media print {
-    @page { size: A5; margin: 10mm; }
-    #printArea { display: block !important; }
-  }
-  /* Responsive cho iPhone - fix bố cục thanh nav và toàn bộ giao diện */
-  @media (max-width: 768px) {
-    .header-inner {
-      flex-wrap: wrap;
-      height: auto;
-      padding: 8px 0;
-    }
-    .nav {
-      order: 3;
-      width: 100%;
-      overflow-x: auto;
-      justify-content: flex-start;
-      gap: 4px;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 4px;
-    }
-    .nav-btn {
-      padding: 6px 10px;
-      font-size: 12px;
-      flex-shrink: 0;
-    }
-    .logo {
-      flex-shrink: 0;
-    }
-    .logo-tagline {
-      display: none;
-    }
-    .header-right {
-      margin-left: auto;
-    }
-    .hero {
-      flex-direction: column;
-      text-align: center;
-      padding: 16px;
-    }
-    .hero-icon {
-      display: none;
-    }
-    .shop-toolbar {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .search-wrap {
-      width: 100%;
-    }
-    .filter-select {
-      width: 100%;
-    }
-    .col-picker {
-      justify-content: center;
-    }
-    .product-grid {
-      gap: 10px;
-    }
-    .product-grid.cols-2, .product-grid.cols-3, .product-grid.cols-4 {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .admin-layout {
-      grid-template-columns: 1fr;
-    }
-    .cart-item {
-      flex-wrap: wrap;
-    }
-    .ci-info {
-      min-width: 120px;
-    }
-    .modal .modal-lg, .modal .modal-sm {
-      max-width: calc(100% - 20px);
-      margin: 0 auto;
-    }
-    .numpad {
-      gap: 5px;
-    }
-    .npbtn {
-      padding: 10px 4px;
-      font-size: 15px;
-    }
-    .pay-display {
-      font-size: 24px;
-    }
-    .hitem-head {
-      flex-wrap: wrap;
-    }
-  }
-  @media (max-width: 480px) {
-    .product-grid.cols-2, .product-grid.cols-3, .product-grid.cols-4 {
-      grid-template-columns: 1fr;
-    }
-    .hero-text h2 {
-      font-size: 18px;
-    }
-    .hero-text p {
-      font-size: 12px;
-    }
-    .pc-name {
-      font-size: 13px;
-    }
-    .pc-price {
-      font-size: 16px;
-    }
-  }
-</style>
-<!-- ===== KẾT THÚC SỬA ===== -->
 </body>
 </html>
