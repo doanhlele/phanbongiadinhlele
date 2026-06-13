@@ -245,14 +245,12 @@ td{padding:9px 12px;vertical-align:middle}
 .page-loading .big-spin{width:36px;height:36px;border:3px solid var(--border2);border-top-color:var(--green);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
 
 /* ===== INVOICE PRINT IMPROVED ===== */
-/* ===== INVOICE PRINT IMPROVED ===== */
-/* ===== EXCEL / GOOGLE SHEETS RETAIL INVOICE STYLE ===== */
 @media print {
-  body * { 
-    visibility: hidden; 
+  body * {
+    visibility: hidden;
   }
-  #printArea, #printArea * { 
-    visibility: visible; 
+  #printArea, #printArea * {
+    visibility: visible;
   }
   #printArea {
     position: absolute;
@@ -260,20 +258,16 @@ td{padding:9px 12px;vertical-align:middle}
     top: 0;
     width: 100%;
     margin: 0;
-    padding: 12mm 12mm; /* Khoảng cách lề trang in giấy A4/A5 */
+    padding: 12mm 12mm;
     font-family: 'Segoe UI', Arial, sans-serif;
     font-size: 11pt;
     color: #000;
     background: #fff;
   }
-
-  /* Khung bao bọc mô phỏng một Sheet Excel */
   .excel-invoice {
     width: 100%;
     margin: 0 auto;
   }
-
-  /* Bố cục phần Header */
   .excel-header {
     display: flex;
     justify-content: space-between;
@@ -293,8 +287,6 @@ td{padding:9px 12px;vertical-align:middle}
     font-weight: bold;
     letter-spacing: 0.5px;
   }
-  
-  /* Khu vực thông tin khách hàng dạng hàng kẻ điểm chỉ như hàng điền dữ liệu */
   .customer-info-block {
     margin-bottom: 20px;
     font-size: 11pt;
@@ -311,39 +303,31 @@ td{padding:9px 12px;vertical-align:middle}
     flex: 1;
     border-bottom: 1px dotted #555;
   }
-
-  /* Bảng lưới chính chuẩn ô tính Excel */
   .excel-grid-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
   }
   .excel-grid-table th, .excel-grid-table td {
-    border: 1px solid #000; /* Viền lưới đen mảnh bao quanh toàn bộ các ô */
+    border: 1px solid #000;
     padding: 6px 8px;
     font-size: 10.5pt;
     vertical-align: middle;
   }
   .excel-grid-table th {
-    background-color: #e6e6e6; /* Màu nền xám tiêu đề cột của Excel */
+    background-color: #e6e6e6;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
     font-size: 10pt;
   }
-  
-  /* Căn lề các ô dữ liệu */
   .col-center { text-align: center; }
   .col-left { text-align: left; }
   .col-right { text-align: right; }
-  
-  /* Các dòng tính tổng cộng (Merge cells ở lề trái) */
   .excel-grid-table tr.summary-row td {
     font-weight: bold;
     background-color: #fafafa;
   }
-  
-  /* Khối ký tên cuối biểu mẫu bán hàng */
   .signature-section {
     margin-top: 35px;
     display: flex;
@@ -355,18 +339,16 @@ td{padding:9px 12px;vertical-align:middle}
     width: 40%;
   }
   .signature-space {
-    height: 75px; /* Khoảng trống ký tên */
+    height: 75px;
   }
-}/* ===== EMPTY STATE ===== */
+}
+
+/* ===== EMPTY STATE ===== */
 .empty-state{text-align:center;padding:52px 20px;color:var(--muted)}
 .empty-state .emo{font-size:48px;margin-bottom:10px}
 
-/* ===== CONFIG BANNER ===== */
-.config-banner{background:linear-gradient(135deg,#fff8e1,#fff3cd);border:2px solid var(--warning);border-radius:var(--radius);padding:16px 18px;margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.config-banner p{flex:1;font-size:14px;color:#7c5000;font-weight:600}
-.url-input-wrap{display:flex;gap:8px;align-items:center;width:100%}
-.url-input-wrap input{flex:1;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:9px 11px;font-size:13px;outline:none}
-.url-input-wrap input:focus{border-color:var(--green)}
+/* ===== CONFIG BANNER - ẨN HOÀN TOÀN DO ĐÃ CỐ ĐỊNH URL ===== */
+.config-banner{display:none !important;}
 
 /* ===== ADMIN SEARCH ===== */
 .admin-search{display:flex;gap:8px;margin-bottom:12px}
@@ -425,13 +407,7 @@ td{padding:9px 12px;vertical-align:middle}
 
   <!-- ====== TAB: SHOP ====== -->
   <div class="tab-content active" id="tab-shop">
-    <div id="configBanner" class="config-banner" style="display:none">
-      <p>⚠️ Chưa cấu hình URL Google Apps Script. Nhập URL để kết nối dữ liệu từ Sheets.</p>
-      <div class="url-input-wrap">
-        <input type="text" id="urlInput" placeholder="https://script.google.com/macros/s/.../exec">
-        <button class="btn btn-green" onclick="saveUrl()">💾 Lưu URL</button>
-      </div>
-    </div>
+    <!-- Không hiển thị config banner vì đã có URL cố định -->
     <div class="shop-toolbar">
       <div class="search-wrap">
         <span class="search-icon">🔍</span>
@@ -627,10 +603,9 @@ td{padding:9px 12px;vertical-align:middle}
 
 <script>
 // ============================================================
-// CONFIG — Thay URL Apps Script của bạn vào đây
+// CỐ ĐỊNH URL GOOGLE APPS SCRIPT (KHÔNG CẦN NHẬP)
 // ============================================================
-const WEB_APP_URL_KEY = 'fertilizer_web_app_url';
-let WEB_APP_URL = localStorage.getItem(WEB_APP_URL_KEY) || '';
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwg6QJCJznWUAfsGerRexSd9xrhhFbeWFD7oyDFfyeb4pQnC4HBHVT3_hD_Awd1oZTQ/exec';
 
 // ============================================================
 // STATE
@@ -647,29 +622,12 @@ let isProcessing = false;
 // INIT
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
-  checkUrlConfig();
   applyColCount();
   renderCartBadge();
   renderFloatBtn();
-  if (WEB_APP_URL) syncFromSheets(true);
-  else { loadCachedProducts(); renderShop(); }
+  syncFromSheets(true);  // tự động đồng bộ ngay khi tải trang
   renderHistory();
 });
-
-function checkUrlConfig() {
-  const banner = document.getElementById('configBanner');
-  if (!WEB_APP_URL) { banner.style.display = 'flex'; }
-  else { banner.style.display = 'none'; }
-}
-
-function saveUrl() {
-  const val = document.getElementById('urlInput').value.trim();
-  if (!val) { toast('Nhập URL trước!','orange'); return; }
-  WEB_APP_URL = val;
-  localStorage.setItem(WEB_APP_URL_KEY, WEB_APP_URL);
-  checkUrlConfig();
-  syncFromSheets();
-}
 
 // ============================================================
 // TAB
@@ -738,7 +696,6 @@ function formPost(payload) {
 // SYNC FROM SHEETS
 // ============================================================
 async function syncFromSheets(silent) {
-  if (!WEB_APP_URL) { toast('Chưa có URL Apps Script','orange'); return; }
   const btn = document.getElementById('syncBtn');
   btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Đang tải...';
   try {
@@ -1108,13 +1065,12 @@ async function doCheckout(status, paid) {
   });
   localStorage.setItem('fertilizer_products', JSON.stringify(products));
 
-  if (WEB_APP_URL) {
-    try {
-      await formPost({ action: 'checkout', items: cart.map(i=>({id:i.id, qty:i.quantity})) });
-      toast('Đã gửi cập nhật tồn kho lên Sheets','green');
-    } catch(e) {
-      toast('Lỗi cập nhật Sheets (đã lưu local)','orange');
-    }
+  // Gửi cập nhật lên Sheets
+  try {
+    await formPost({ action: 'checkout', items: cart.map(i=>({id:i.id, qty:i.quantity})) });
+    toast('Đã gửi cập nhật tồn kho lên Sheets','green');
+  } catch(e) {
+    toast('Lỗi cập nhật Sheets (đã lưu local)','orange');
   }
 
   closeModal('checkoutModal');
@@ -1124,23 +1080,23 @@ async function doCheckout(status, paid) {
   const wantPrint = confirm('🖨️ In hóa đơn?');
   if (wantPrint) printInvoice(txn);
 
-  if (WEB_APP_URL) {
-    setTimeout(()=>syncFromSheets(true), 2000);
-  }
+  // Tự động đồng bộ lại dữ liệu sau 2 giây
+  setTimeout(()=>syncFromSheets(true), 2000);
 }
 
-// ============= CẢI TIẾN HÀM IN HÓA ĐƠN (ĐẦY ĐỦ THÔNG TIN, CSS IN CHUYÊN NGHIỆP) =============
+// ============= IN HÓA ĐƠN CHUYÊN NGHIỆP KIỂU EXCEL =============
 function printInvoice(txn) {
   const storeName = "🌱 CỬA HÀNG PHÂN BÓN XANH";
   const storeAddress = "Đường 14, Hòa Vang, TP. Đà Nẵng";
   const storePhone = "Hotline: 0905.XXX.XXX";
   
-  // Vòng lặp xuất hàng hóa ra các dòng bảng tính Excel
+  // Tạo từng dòng sản phẩm
   const rowsHtml = txn.items.map((item, idx) => `
     <tr>
       <td class="col-center">${idx + 1}</td>
       <td class="col-left">${esc(item.name)}</td>
-      <td class="col-center">Bao/Chai</td> <td class="col-center">${item.quantity}</td>
+      <td class="col-center">Bao/Chai</td>
+      <td class="col-center">${item.quantity}</td>
       <td class="col-right">${fmtPrice(item.price)}</td>
       <td class="col-right" style="font-weight: bold;">${fmtPrice(item.price * item.quantity)}</td>
     </tr>
@@ -1237,18 +1193,17 @@ function printInvoice(txn) {
     </div>
   `;
 
-  // Đưa vào DOM để tiến hành in ấn công cộng
   const printArea = document.getElementById('printArea');
   printArea.innerHTML = html;
   
-  // Dọn rác DOM sau khi đóng cửa sổ in ấn
   window.onafterprint = () => {
     printArea.innerHTML = '';
     window.onafterprint = null;
   };
-
   window.print();
-}// ============================================================
+}
+
+// ============================================================
 // ADMIN CRUD
 // ============================================================
 let adminFilter = '';
@@ -1285,7 +1240,7 @@ function renderAdminTable() {
           <button class="btn btn-ghost btn-sm" onclick="editProduct('${esc(p.id)}')">✏️</button>
           <button class="btn btn-red btn-sm" onclick="deleteProduct('${esc(p.id)}')">🗑️</button>
         </div>
-      </td>
+       </td>
     </tr>
   `).join('');
 }
@@ -1353,16 +1308,12 @@ async function submitProduct() {
   renderAdminTable(); updateAdminCount(); renderShop();
   cancelEdit();
 
-  if (WEB_APP_URL) {
-    try {
-      await formPost(payload);
-      toast(editId ? 'Đã cập nhật sản phẩm ✅' : 'Đã thêm sản phẩm ✅','green');
-      setTimeout(()=>syncFromSheets(true),1500);
-    } catch(e) {
-      toast('Lỗi đồng bộ Sheets','red');
-    }
-  } else {
-    toast(editId ? 'Đã cập nhật (local)' : 'Đã thêm (local)','green');
+  try {
+    await formPost(payload);
+    toast(editId ? 'Đã cập nhật sản phẩm ✅' : 'Đã thêm sản phẩm ✅','green');
+    setTimeout(()=>syncFromSheets(true),1500);
+  } catch(e) {
+    toast('Lỗi đồng bộ Sheets','red');
   }
   btn.disabled = false;
 }
@@ -1374,10 +1325,8 @@ async function deleteProduct(id) {
     products = products.filter(x=>x.id!==id);
     localStorage.setItem('fertilizer_products',JSON.stringify(products));
     renderAdminTable(); updateAdminCount(); renderShop();
-    if (WEB_APP_URL) {
-      try { await formPost({action:'delete',id}); toast('Đã xóa ✅','green'); }
-      catch(e) { toast('Lỗi xóa trên Sheets','red'); }
-    } else { toast('Đã xóa (local)','green'); }
+    try { await formPost({action:'delete',id}); toast('Đã xóa ✅','green'); }
+    catch(e) { toast('Lỗi xóa trên Sheets','red'); }
   });
 }
 
@@ -1506,6 +1455,5 @@ function esc(s) {
   return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 </script>
-
 </body>
 </html>
